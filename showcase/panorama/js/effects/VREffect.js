@@ -166,7 +166,7 @@ THREE.VREffect = function ( renderer, onError ) {
 
 	this.render = function ( scene, camera ) {
 
-		if ( vrHMD && isPresenting ) {
+		if ( vrHMD /*&& isPresenting*/ ) {
 
 			var autoUpdate = scene.autoUpdate;
 

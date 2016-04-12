@@ -166,7 +166,7 @@ THREE.VREffect = function ( renderer, onError ) {
 
 	this.render = function ( scene, camera ) {
 
-		if ( vrHMD && isPresenting ) {
+		if ( vrHMD /*&& isPresenting*/ ) {
 
 			var autoUpdate = scene.autoUpdate;
 
@@ -202,6 +202,7 @@ THREE.VREffect = function ( renderer, onError ) {
 				scene = scene[ 0 ];
 
 			}
+
 
 			// When rendering we don't care what the recommended size is, only what the actual size
 			// of the backbuffer is.
