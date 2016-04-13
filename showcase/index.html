@@ -7,6 +7,10 @@
   <title>WebVR Showcase</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
 <style>
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
 }
@@ -34,19 +38,6 @@ h1 {
    clear: both;
 }
 
-#box > div {
-  width: 160px;
-  height: 110px;
-  outline: 1px solid #ccc;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  float: left;
-}
-
-#box > div:hover {
-  background-color: #ddd;
-}
-
 a {
   color: black;
 }
@@ -72,9 +63,16 @@ a:visited {
 
 #box > a:hover {
   background-color: #eee;
-
 }
 
+#msg {
+  display: none;
+  width: 100%;
+  text-align: center;
+  outline: 1px solid #000;
+  padding: 5px;
+  margin-bottom: 10px;
+}
 </style>
 </head>
 
@@ -85,6 +83,8 @@ a:visited {
 <div id="box">
 
   <h1>WebVR Samples Showcase</h1>
+
+  <div id="msg"></div>
 
   <a href="cubes/">Cubes</a>
   <a href="http://quake3.webvr.io">Quake</a>
@@ -97,5 +97,21 @@ a:visited {
 
 </div>
 
+<script>
+var msgEl = document.getElementById('msg');
+
+var hasWebVR = navigator.getVRDevices || !!navigator.getVRDisplays;
+var hasLatestWebVR = !!navigator.getVRDisplays;
+
+var isVRBrowser = navigator.userAgent.indexOf('VR') !== -1;
+
+if (!hasWebVR) {
+  msgEl.innerHTML = "Your browser does not support WebVR";
+  msgEl.style.display = 'block';
+} else if (!hasLatestWebVR) {
+  msgEl.innerHTML = "Your browser is not using the latest WebVR";
+  msgEl.style.display = 'block';
+}
+</script>
 </body>
 </html>
