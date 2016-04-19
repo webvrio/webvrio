@@ -11,6 +11,10 @@ var VRUtil = {
 
   isWebVrApiPresent: function() {
     return !! window.navigator.getVRDevices || !! window.navigator.getVRDisplays;
+  },
+
+  isLatestApi: function() {
+    return !! window.navigator.getVRDisplays;
   }
 
 };

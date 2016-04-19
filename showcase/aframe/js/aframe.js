@@ -52771,7 +52771,7 @@ module.exports.Component = registerComponent('camera', {
     // If `active` property changes, or first update, handle active camera with system.
     if (data.active && system.activeCameraEl !== this.el) {
       // Camera enabled. Set camera to this camera.
-      system.setActiveCamera(el, camera);
+      system.setActiveCamera(el);
     } else if (!data.active && system.activeCameraEl === this.el) {
       // Camera disabled. Set camera to another camera.
       system.disableActiveCamera();
@@ -52779,7 +52779,7 @@ module.exports.Component = registerComponent('camera', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100}],23:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101}],23:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 
@@ -52817,7 +52817,7 @@ module.exports.Component = registerComponent('collada-model', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100}],24:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101}],24:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var utils = _dereq_('../utils/');
 
@@ -52957,7 +52957,7 @@ module.exports.Component = registerComponent('cursor', {
   }
 });
 
-},{"../core/component":53,"../utils/":113}],25:[function(_dereq_,module,exports){
+},{"../core/component":54,"../utils/":114}],25:[function(_dereq_,module,exports){
 var geometries = _dereq_('../core/geometry').geometries;
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -53026,7 +53026,7 @@ module.exports.Component = registerComponent('geometry', {
   }
 });
 
-},{"../core/component":53,"../core/geometry":54,"../lib/three":100}],26:[function(_dereq_,module,exports){
+},{"../core/component":54,"../core/geometry":55,"../lib/three":101}],26:[function(_dereq_,module,exports){
 _dereq_('./camera');
 _dereq_('./collada-model');
 _dereq_('./cursor');
@@ -53045,6 +53045,7 @@ _dereq_('./visible');
 _dereq_('./wasd-controls');
 
 _dereq_('./scene/canvas');
+_dereq_('./scene/debug');
 _dereq_('./scene/fog');
 _dereq_('./scene/keyboard-shortcuts');
 _dereq_('./scene/stats');
@@ -53053,7 +53054,7 @@ _dereq_('./scene/vr-mode-ui');
 // Deprecated.
 _dereq_('./loader');
 
-},{"./camera":22,"./collada-model":23,"./cursor":24,"./geometry":25,"./light":27,"./loader":28,"./look-at":29,"./look-controls":30,"./material":31,"./obj-model":32,"./position":33,"./raycaster":34,"./rotation":35,"./scale":36,"./scene/canvas":37,"./scene/fog":38,"./scene/keyboard-shortcuts":39,"./scene/stats":40,"./scene/vr-mode-ui":41,"./sound":42,"./visible":43,"./wasd-controls":44}],27:[function(_dereq_,module,exports){
+},{"./camera":22,"./collada-model":23,"./cursor":24,"./geometry":25,"./light":27,"./loader":28,"./look-at":29,"./look-controls":30,"./material":31,"./obj-model":32,"./position":33,"./raycaster":34,"./rotation":35,"./scale":36,"./scene/canvas":37,"./scene/debug":38,"./scene/fog":39,"./scene/keyboard-shortcuts":40,"./scene/stats":41,"./scene/vr-mode-ui":42,"./sound":43,"./visible":44,"./wasd-controls":45}],27:[function(_dereq_,module,exports){
 var diff = _dereq_('../utils').diff;
 var debug = _dereq_('../utils/debug');
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -53174,7 +53175,7 @@ function getLight (data) {
   }
 }
 
-},{"../core/component":53,"../lib/three":100,"../utils":113,"../utils/debug":112}],28:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101,"../utils":114,"../utils/debug":113}],28:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var registerComponent = _dereq_('../core/component').registerComponent;
 var parseUrl = _dereq_('../utils/src-loader').parseUrl;
@@ -53252,7 +53253,7 @@ module.exports.Component = registerComponent('loader', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100,"../utils/debug":112,"../utils/src-loader":115}],29:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101,"../utils/debug":113,"../utils/src-loader":116}],29:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var coordinates = _dereq_('../utils/coordinates');
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -53346,7 +53347,7 @@ module.exports.Component = registerComponent('look-at', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100,"../utils/coordinates":111,"../utils/debug":112}],30:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101,"../utils/coordinates":112,"../utils/debug":113}],30:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 
@@ -53587,7 +53588,7 @@ module.exports.Component = registerComponent('look-controls', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100}],31:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101}],31:[function(_dereq_,module,exports){
 /* global Promise */
 var debug = _dereq_('../utils/debug');
 var utils = _dereq_('../utils');
@@ -53752,8 +53753,7 @@ function disposeMaterial (material, system) {
   system.unregisterMaterial(material);
 }
 
-},{"../core/component":53,"../core/shader":61,"../lib/three":100,"../utils":113,"../utils/debug":112}],32:[function(_dereq_,module,exports){
-/* global HTMLElement */
+},{"../core/component":54,"../core/shader":62,"../lib/three":101,"../utils":114,"../utils/debug":113}],32:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -53794,7 +53794,7 @@ module.exports.Component = registerComponent('obj-model', {
 
     if (mtlUrl) {
       // .OBJ with an .MTL.
-      if (HTMLElement.prototype.getAttribute.call(el, 'material')) {
+      if (el.hasAttribute('material')) {
         warn('Material component properties are ignored when a .MTL is provided');
       }
       mtlLoader.setBaseUrl(mtlUrl.substr(0, mtlUrl.lastIndexOf('/') + 1));
@@ -53829,7 +53829,7 @@ module.exports.Component = registerComponent('obj-model', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100,"../utils/debug":112}],33:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101,"../utils/debug":113}],33:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 module.exports.Component = registerComponent('position', {
@@ -53842,7 +53842,7 @@ module.exports.Component = registerComponent('position', {
   }
 });
 
-},{"../core/component":53}],34:[function(_dereq_,module,exports){
+},{"../core/component":54}],34:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 
@@ -53986,7 +53986,7 @@ module.exports.Component = registerComponent('raycaster', {
   })()
 });
 
-},{"../core/component":53,"../lib/three":100}],35:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101}],35:[function(_dereq_,module,exports){
 var degToRad = _dereq_('../lib/three').Math.degToRad;
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -54004,7 +54004,7 @@ module.exports.Component = registerComponent('rotation', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100}],36:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101}],36:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 // Avoids triggering a zero-determinant which makes object3D matrix non-invertible.
@@ -54026,7 +54026,7 @@ module.exports.Component = registerComponent('scale', {
   }
 });
 
-},{"../core/component":53}],37:[function(_dereq_,module,exports){
+},{"../core/component":54}],37:[function(_dereq_,module,exports){
 var register = _dereq_('../../core/component').registerComponent;
 
 module.exports.Component = register('canvas', {
@@ -54057,6 +54057,8 @@ module.exports.Component = register('canvas', {
       canvas.classList.add('a-canvas');
       canvas.style.height = data.height + '%';
       canvas.style.width = data.width + '%';
+      // Mark canvas as provided/injected by A-Frame.
+      canvas.dataset.aframeDefault = true;
       scene.appendChild(canvas);
     }
 
@@ -54073,7 +54075,14 @@ module.exports.Component = register('canvas', {
   }
 });
 
-},{"../../core/component":53}],38:[function(_dereq_,module,exports){
+},{"../../core/component":54}],38:[function(_dereq_,module,exports){
+var register = _dereq_('../../core/component').registerComponent;
+
+module.exports.Component = register('debug', {
+  schema: { default: false }
+});
+
+},{"../../core/component":54}],39:[function(_dereq_,module,exports){
 var register = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 var debug = _dereq_('../../utils/debug');
@@ -54148,7 +54157,7 @@ function getFog (data) {
   return fog;
 }
 
-},{"../../core/component":53,"../../lib/three":100,"../../utils/debug":112}],39:[function(_dereq_,module,exports){
+},{"../../core/component":54,"../../lib/three":101,"../../utils/debug":113}],40:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var shouldCaptureKeyEvent = _dereq_('../../utils/').shouldCaptureKeyEvent;
 var THREE = _dereq_('../../lib/three');
@@ -54187,7 +54196,7 @@ module.exports.Component = registerComponent('keyboard-shortcuts', {
   }
 });
 
-},{"../../core/component":53,"../../lib/three":100,"../../utils/":113}],40:[function(_dereq_,module,exports){
+},{"../../core/component":54,"../../lib/three":101,"../../utils/":114}],41:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var RStats = _dereq_('../../../vendor/rStats');
 _dereq_('../../../vendor/rStats.extras');
@@ -54251,7 +54260,7 @@ function createStats (scene) {
   });
 }
 
-},{"../../../vendor/rStats":118,"../../../vendor/rStats.extras":117,"../../core/component":53,"../../lib/rStatsAframe":99}],41:[function(_dereq_,module,exports){
+},{"../../../vendor/rStats":119,"../../../vendor/rStats.extras":118,"../../core/component":54,"../../lib/rStatsAframe":100}],42:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 var utils = _dereq_('../../utils/');
@@ -54447,7 +54456,7 @@ function createOrientationModal (exitVRHandler) {
   return modal;
 }
 
-},{"../../core/component":53,"../../lib/three":100,"../../utils/":113}],42:[function(_dereq_,module,exports){
+},{"../../core/component":54,"../../lib/three":101,"../../utils/":114}],43:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var diff = _dereq_('../utils').diff;
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -54579,7 +54588,7 @@ module.exports.Component = registerComponent('sound', {
   }
 });
 
-},{"../core/component":53,"../lib/three":100,"../utils":113,"../utils/debug":112}],43:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101,"../utils":114,"../utils/debug":113}],44:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 /**
@@ -54596,7 +54605,7 @@ module.exports.Component = registerComponent('visible', {
   }
 });
 
-},{"../core/component":53}],44:[function(_dereq_,module,exports){
+},{"../core/component":54}],45:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var shouldCaptureKeyEvent = _dereq_('../utils/').shouldCaptureKeyEvent;
 var THREE = _dereq_('../lib/three');
@@ -54768,7 +54777,7 @@ module.exports.Component = registerComponent('wasd-controls', {
   })()
 });
 
-},{"../core/component":53,"../lib/three":100,"../utils/":113}],45:[function(_dereq_,module,exports){
+},{"../core/component":54,"../lib/three":101,"../utils/":114}],46:[function(_dereq_,module,exports){
 /**
  * Animation configuration options for TWEEN.js animations.
  * Used by `<a-animation>`.
@@ -54870,7 +54879,7 @@ module.exports.easingFunctions = EASING_FUNCTIONS;
 module.exports.fills = FILLS;
 module.exports.repeats = REPEATS;
 
-},{"tween.js":19}],46:[function(_dereq_,module,exports){
+},{"tween.js":19}],47:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var constants = _dereq_('../constants/animation');
 var coordinates = _dereq_('../utils/').coordinates;
@@ -55337,7 +55346,7 @@ function boolToNum (bool) {
   return bool ? 1 : 0;
 }
 
-},{"../constants/animation":45,"../utils/":113,"./a-node":51,"./a-register-element":52,"./schema":60,"tween.js":19}],47:[function(_dereq_,module,exports){
+},{"../constants/animation":46,"../utils/":114,"./a-node":52,"./a-register-element":53,"./schema":61,"tween.js":19}],48:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var debug = _dereq_('../utils/debug');
 var registerElement = _dereq_('./a-register-element').registerElement;
@@ -55469,7 +55478,7 @@ function mediaElementLoaded (el) {
   });
 }
 
-},{"../lib/three":100,"../utils/debug":112,"./a-node":51,"./a-register-element":52}],48:[function(_dereq_,module,exports){
+},{"../lib/three":101,"../utils/debug":113,"./a-node":52,"./a-register-element":53}],49:[function(_dereq_,module,exports){
 /* global HTMLElement */
 var debug = _dereq_('../utils/debug');
 var registerElement = _dereq_('./a-register-element').registerElement;
@@ -55520,7 +55529,7 @@ module.exports = registerElement('a-cubemap', {
   })
 });
 
-},{"../utils/debug":112,"./a-register-element":52}],49:[function(_dereq_,module,exports){
+},{"../utils/debug":113,"./a-register-element":53}],50:[function(_dereq_,module,exports){
 /* global HTMLElement */
 var ANode = _dereq_('./a-node');
 var components = _dereq_('./component').components;
@@ -55532,7 +55541,6 @@ var AEntity;
 var isNode = re.isNode;
 var debug = utils.debug('core:a-entity:debug');
 var registerElement = re.registerElement;
-var styleParser = utils.styleParser;
 
 /**
  * Entity is a container object that components are plugged into to comprise everything in
@@ -55572,6 +55580,13 @@ var proto = Object.create(ANode.prototype, {
    */
   attributeChangedCallback: {
     value: function (attr, oldVal, newVal) {
+      var component = this.components[attr];
+      // If the empty string is passed by the component initialization
+      // logic we ignore the component update.
+      if (component && component.justInitialized && newVal === '') {
+        delete component.justInitialized;
+        return;
+      }
       this.setEntityAttribute(attr, oldVal, newVal);
     }
   },
@@ -55581,7 +55596,7 @@ var proto = Object.create(ANode.prototype, {
       this.addToParent();
       if (!this.isScene) {
         this.load();
-        if (!this.parentNode.paused) { this.play(); }
+        if (this.parentEl.isPlaying) { this.play(); }
       }
     }
   },
@@ -55601,11 +55616,14 @@ var proto = Object.create(ANode.prototype, {
 
   applyMixin: {
     value: function (attr) {
-      var attrValue = this.getAttribute(attr);
+      var attrValue;
       if (!attr) {
         this.updateComponents();
         return;
       }
+      attrValue = this.getAttribute(attr);
+      // Make absence of attribute for getAttribute return undefined rather than null
+      attrValue = attrValue === null ? undefined : attrValue;
       this.updateComponent(attr, attrValue);
     }
   },
@@ -55726,10 +55744,8 @@ var proto = Object.create(ANode.prototype, {
   load: {
     value: function () {
       if (this.hasLoaded) { return; }
-
       // Attach to parent object3D.
       this.addToParent();
-
       if (this.isScene) {
         ANode.prototype.load.call(this, this.updateComponents.bind(this));
       } else {
@@ -55767,13 +55783,17 @@ var proto = Object.create(ANode.prototype, {
 
   /**
    * Initialize component.
+   *
+   * @param {string} name - Component name.
+   * @param {object} data - Component data
+   * @param {boolean} isDependency - True if the component is a dependency.
    */
   initComponent: {
-    value: function (name, isDependency) {
+    value: function (name, data, isDependency) {
       var component;
-      var isComponentDefined = checkComponentDefined(this, name);
+      var isComponentDefined = checkComponentDefined(this, name) || data !== undefined;
 
-      // Check if component is registered and whether component should be iniitalized.
+      // Check if component is registered and whether component should be initialized.
       if (!components[name] || (!isComponentDefined && !isDependency)) {
         return;
       }
@@ -55781,21 +55801,20 @@ var proto = Object.create(ANode.prototype, {
       // Initialize dependencies.
       this.initComponentDependencies(name);
 
-      if (isDependency && !isComponentDefined) {
-        // Add component if it is a dependency and not yet defined.
-        this.setAttribute(name, '');
-      } else {
-        if (this.isScene && !this.hasAttribute(name) && name in this.defaultComponents) {
-          // For scene default components, expose them in the DOM.
-          HTMLElement.prototype.setAttribute.call(this, name, this.defaultComponents[name]);
-        }
+      // Check if component already initialized.
+      if (name in this.components) { return; }
+      component = this.components[name] = new components[name].Component(this, data);
+      if (this.isPlaying) { playComponent(component, this.sceneEl); }
 
-        // Check if component already initialized.
-        if (name in this.components) { return; }
-
-        component = this.components[name] = new components[name].Component(this);
-        if (this.isPlaying) { playComponent(component, this.sceneEl); }
+      // Components are reflected in the DOM as attributes but the state is not shown
+      // hence we set the attribute to empty string.
+      // The flag justInitialized is for attributeChangedCallback to not overwrite
+      // the component with the empty string.
+      if (!this.hasAttribute(name)) {
+        component.justInitialized = true;
+        HTMLElement.prototype.setAttribute.call(this, name, '');
       }
+
       debug('Component initialized: %s', name);
     },
     writable: window.debug
@@ -55810,7 +55829,7 @@ var proto = Object.create(ANode.prototype, {
       dependencies = components[name].dependencies;
       if (!dependencies) { return; }
       dependencies.forEach(function (component) {
-        self.initComponent(component, true);
+        self.initComponent(component, undefined, true);
       });
     }
   },
@@ -55818,20 +55837,51 @@ var proto = Object.create(ANode.prototype, {
   removeComponent: {
     value: function (name) {
       var component = this.components[name];
+      var isDefault = name in this.defaultComponents;
+      var isMixedIn = isComponentMixedIn(name, this.mixinEls);
+      // Don't remove default or mixed in components
+      if (isDefault || isMixedIn) { return; }
       pauseComponent(component, this.sceneEl);
       component.remove();
       delete this.components[name];
     }
   },
 
+  /**
+   * Updates all the entity's components. Given by defaults, mixins and attributes
+   * Default components update before the rest.
+   */
   updateComponents: {
     value: function () {
+      var elComponents = {};
       var self = this;
-      var allComponents = Object.keys(components);
-      allComponents.forEach(updateComponent);
+      var i;
+      if (!this.hasLoaded) { return; }
+      // Components defined on the entity element
+      var attributes = this.attributes;
+      for (i = 0; i < attributes.length; ++i) {
+        addComponent(attributes[i].name);
+      }
+      // Components defined as mixins
+      getMixedInComponents(this).forEach(addComponent);
+      // Updates default components first
+      Object.keys(this.defaultComponents).forEach(updateComponent);
+      // Updates the rest of the components
+      Object.keys(elComponents).forEach(updateComponent);
+
+      // add component to the list
+      function addComponent (key) {
+        if (!components[key]) { return; }
+        elComponents[key] = true;
+      }
+      // updates a component with a given name
       function updateComponent (name) {
-        var elValue = self.getAttribute(name);
-        self.updateComponent(name, elValue);
+        var attrValue = self.getAttribute(name);
+        delete elComponents[name];
+        // turn null into undefined because getAttribute
+        // returns null in the absence of an attribute
+        attrValue = attrValue === null ? undefined : attrValue;
+        self.updateComponent(name, attrValue);
       }
     }
   },
@@ -55841,30 +55891,42 @@ var proto = Object.create(ANode.prototype, {
    *
    * When initializing, we set the component on `this.components`.
    *
-   * @param {string} name - Component name.
-   * @param {object} newData - The new properties assigned to the component
+   * @param {string} attr - Component name.
+   * @param {object} attrValue - The value of the DOM attribute.
    */
   updateComponent: {
-    value: function (name, newData) {
-      var component = this.components[name];
-      var isDefault = name in this.defaultComponents;
-      var isMixedIn = isComponentMixedIn(name, this.mixinEls);
+    value: function (attr, attrValue) {
+      var component = this.components[attr];
       if (component) {
-        // Attribute was removed, remove component if:
-        // 1. If component not defined in the defaults/mixins/attribute.
-        // 2. If new data is null, then not a default component and component is not defined
-        //    via mixins
-        if (!checkComponentDefined(this, name) ||
-            newData === null && !isDefault && !isMixedIn) {
-          this.removeComponent(name);
+        if (attrValue === null) {
+          this.removeComponent(attr);
           return;
         }
         // Component already initialized. Update component.
-        component.updateProperties(newData);
+        component.updateProperties(attrValue);
         return;
       }
       // Component not yet initialized. Initialize component.
-      this.initComponent(name);
+      this.initComponent(attr, attrValue);
+    }
+  },
+
+  /**
+   * Updates one property of the component
+   *
+   * @param {string} name - Component name
+   * @param {string} property - Component property name
+   * @param {any} propertyValue - New property value
+   */
+  updateComponentProperty: {
+    value: function (name, property, propertyValue) {
+      var component = this.components[name];
+      // Cached attribute value
+      var attrValue = component && component.attrValue;
+      // Copy cached value
+      var componentObj = attrValue ? utils.extend({}, attrValue) : {};
+      componentObj[property] = propertyValue;
+      this.updateComponent(name, componentObj);
     }
   },
 
@@ -55879,8 +55941,9 @@ var proto = Object.create(ANode.prototype, {
       var component = components[attr];
       if (component) {
         this.setEntityAttribute(attr, undefined, null);
+      } else {
+        HTMLElement.prototype.removeAttribute.call(this, attr);
       }
-      HTMLElement.prototype.removeAttribute.call(this, attr);
     }
   },
 
@@ -55895,7 +55958,7 @@ var proto = Object.create(ANode.prototype, {
       var sceneEl = this.sceneEl;
 
       // Already playing.
-      if (this.isPlaying) { return; }
+      if (this.isPlaying || !this.hasLoaded) { return; }
       this.isPlaying = true;
 
       // Wake up all components.
@@ -55950,18 +56013,22 @@ var proto = Object.create(ANode.prototype, {
    */
   setEntityAttribute: {
     value: function (attr, oldVal, newVal) {
-      var component = components[attr];
-      oldVal = oldVal || this.getAttribute(attr);
-      // When creating entities programatically and setting attributes, it is not part
-      // of the scene until it is inserted into the DOM. This does not apply to scenes as
-      // scenes depend on its child entities to load.
-      if (!this.hasLoaded && !this.isScene) { return; }
-      if (attr === 'mixin') {
-        this.updateStateMixins(newVal, oldVal);
-        this.updateComponents();
+      if (components[attr]) {
+        this.updateComponent(attr, newVal);
         return;
       }
-      if (component) { this.updateComponent(attr, newVal); }
+      if (attr === 'mixin') {
+        this.mixinUpdate(newVal, oldVal);
+        return;
+      }
+    }
+  },
+
+  mixinUpdate: {
+    value: function (newMixins, oldMixins) {
+      oldMixins = oldMixins || this.getAttribute('mixin');
+      this.updateStateMixins(newMixins, oldMixins);
+      this.updateComponents();
     }
   },
 
@@ -55984,37 +56051,51 @@ var proto = Object.create(ANode.prototype, {
    */
   setAttribute: {
     value: function (attr, value, componentPropValue) {
-      var self = this;
-      var component = this.components[attr] || components[attr];
-      var partialComponentData;
-      value = value === undefined ? '' : value;
-      var componentObj = value;  // Deserialized value to send to the component.
-      var componentStr = value;  // Serialized value to send to the DOM.
-      var oldValue;
-
-      if (component) {
+      var isDebugMode = this.sceneEl && this.sceneEl.getAttribute('debug');
+      if (components[attr]) {
+        // Just update one of the component properties
         if (typeof value === 'string' && componentPropValue !== undefined) {
-          // Update currently-defined component data with the new property value.
-          // Use native setAttribute in order not to double-parse properties.
-          partialComponentData = styleParser.parse(
-            HTMLElement.prototype.getAttribute.call(this, attr)) || {};
-          partialComponentData[value] = componentPropValue;
-          componentObj = partialComponentData;
+          this.updateComponentProperty(attr, value, componentPropValue);
+        } else {
+          this.updateComponent(attr, value);
         }
-        componentStr = component.stringify(componentObj);
+        // On debug mode we write the component state to the DOM attributes
+        if (isDebugMode) { this.components[attr].flushToDOM(); }
+        return;
       }
-      oldValue = this.getAttribute(attr);
-      ANode.prototype.setAttribute.call(self, attr, componentStr);
-      self.setEntityAttribute(attr, oldValue, componentObj);
+
+      ANode.prototype.setAttribute.call(this, attr, value);
+      if (attr === 'mixin') { this.mixinUpdate(value); }
     },
     writable: window.debug
   },
 
   /**
-   * If `attr` is a component, returns JUST the component data specified in the HTML
-   * by parsing the style-like string into an object. Like a partial version of
-   * `getComputedAttribute` as returned component data does not include applied mixins or
-   * defaults.
+   * To make the DOM attributes reflect the state of the components.
+   *
+   * @param {bool} recursive - Call updateDOM on the children
+   **/
+  flushToDOM: {
+    value: function (recursive) {
+      var components = this.components;
+      var children = this.children;
+      var child;
+      var i;
+      Object.keys(components).forEach(updateDOMAtrribute);
+      if (!recursive) { return; }
+      for (i = 0; i < children.length; ++i) {
+        child = children[i];
+        if (!child.flushToDOM) { continue; }
+        child.flushToDOM(recursive);
+      }
+      function updateDOMAtrribute (name) { components[name].flushToDOM(); }
+    }
+  },
+
+  /**
+   * If `attr` is a component, returns JUST the component data defined on the entity.
+   * Like a partial version of `getComputedAttribute` as returned component data
+   * does not include applied mixins or defaults.
    *
    * If `attr` is not a component, fall back to HTML getAttribute.
    *
@@ -56023,10 +56104,12 @@ var proto = Object.create(ANode.prototype, {
    */
   getAttribute: {
     value: function (attr) {
-      var component = this.components[attr] || components[attr];
-      var value = HTMLElement.prototype.getAttribute.call(this, attr);
-      if (!component || typeof value !== 'string') { return value; }
-      return component.parse(value, true);
+      var component = this.components[attr];
+      // If there's a cached value we just return it
+      if (component && component.attrValue !== undefined) {
+        return component.attrValue;
+      }
+      return HTMLElement.prototype.getAttribute.call(this, attr);
     },
     writable: window.debug
   },
@@ -56091,9 +56174,20 @@ function checkComponentDefined (el, name) {
   if (el.defaultComponents[name] !== undefined) { return true; }
 
   // Check if element contains the component.
-  if (el.hasAttribute(name)) { return true; }
+  if (el.components[name] && el.components[name].attrValue) { return true; }
 
   return isComponentMixedIn(name, el.mixinEls);
+}
+
+function getMixedInComponents (entityEl) {
+  var components = [];
+  entityEl.mixinEls.forEach(function getMixedComponents (mixinEl) {
+    Object.keys(mixinEl.componentAttrCache).forEach(addComponent);
+    function addComponent (key) {
+      components.push(key);
+    }
+  });
+  return components;
 }
 
 /**
@@ -56105,7 +56199,6 @@ function checkComponentDefined (el, name) {
 function isComponentMixedIn (name, mixinEls) {
   var i;
   var inMixin = false;
-
   for (i = 0; i < mixinEls.length; ++i) {
     inMixin = mixinEls[i].hasAttribute(name);
     if (inMixin) { break; }
@@ -56144,18 +56237,34 @@ AEntity = registerElement('a-entity', {
 });
 module.exports = AEntity;
 
-},{"../lib/three":100,"../utils/":113,"./a-node":51,"./a-register-element":52,"./component":53}],50:[function(_dereq_,module,exports){
+},{"../lib/three":101,"../utils/":114,"./a-node":52,"./a-register-element":53,"./component":54}],51:[function(_dereq_,module,exports){
 /* global HTMLElement */
-var AComponents = _dereq_('./component').components;
 var ANode = _dereq_('./a-node');
 var registerElement = _dereq_('./a-register-element').registerElement;
+var components = _dereq_('./component').components;
 
+/**
+ * @member {object} componentAttrCache - Cache of pre parsed component attributes
+ */
 module.exports = registerElement('a-mixin', {
   prototype: Object.create(
     ANode.prototype,
     {
+      createdCallback: {
+        value: function () {
+          this.componentAttrCache = {};
+        }
+      },
+
+      attributeChangedCallback: {
+        value: function (attr, oldVal, newVal) {
+          this.cacheAttribute(attr, newVal);
+        }
+      },
+
       attachedCallback: {
         value: function () {
+          this.cacheAttributes();
           this.load();
         },
         writable: window.debug
@@ -56163,29 +56272,47 @@ module.exports = registerElement('a-mixin', {
 
       setAttribute: {
         value: function (attr, value) {
-          var component = AComponents[attr];
-          if (component && typeof value === 'object') {
-            value = component.stringify(value);
-          }
+          this.cacheAttribute(attr, value);
           HTMLElement.prototype.setAttribute.call(this, attr, value);
         },
         writable: window.debug
       },
 
+      cacheAttribute: {
+        value: function (attr, value) {
+          var component = components[attr];
+          if (!component) { return; }
+          value = value === undefined ? HTMLElement.prototype.getAttribute.call(this, attr) : value;
+          this.componentAttrCache[attr] = component.parseAttrValueForCache(value);
+        }
+      },
+
       getAttribute: {
         value: function (attr) {
-          var component = AComponents[attr];
-          var value = HTMLElement.prototype.getAttribute.call(this, attr);
-          if (!component || typeof value !== 'string') { return value; }
-          return component.parse(value);
+          return this.componentAttrCache[attr] || HTMLElement.prototype.getAttribute.call(this, attr);
         },
         writable: window.debug
+      },
+
+      /**
+       * Update cache of parsed component attributes
+       */
+      cacheAttributes: {
+        value: function () {
+          var attributes = this.attributes;
+          var attrName;
+          var i;
+          for (i = 0; i < attributes.length; ++i) {
+            attrName = attributes[i].name;
+            this.cacheAttribute(attrName);
+          }
+        }
       }
     }
   )
 });
 
-},{"./a-node":51,"./a-register-element":52,"./component":53}],51:[function(_dereq_,module,exports){
+},{"./a-node":52,"./a-register-element":53,"./component":54}],52:[function(_dereq_,module,exports){
 /* global HTMLElement, MutationObserver */
 var registerElement = _dereq_('./a-register-element').registerElement;
 var utils = _dereq_('../utils/');
@@ -56270,8 +56397,8 @@ module.exports = registerElement('a-node', {
         });
 
         Promise.all(childrenLoaded).then(function emitLoaded () {
-          if (cb) { cb(); }
           self.hasLoaded = true;
+          if (cb) { cb(); }
           self.emit('loaded', {}, false);
         });
       },
@@ -56435,7 +56562,7 @@ module.exports = registerElement('a-node', {
   })
 });
 
-},{"../utils/":113,"./a-register-element":52}],52:[function(_dereq_,module,exports){
+},{"../utils/":114,"./a-register-element":53}],53:[function(_dereq_,module,exports){
 // Polyfill `document.registerElement`.
 _dereq_('document-register-element');
 
@@ -56515,7 +56642,7 @@ function wrapANodeMethods (obj) {
     'attributeChangedCallback',
     'createdCallback'
   ];
-  wrapMethods(newObj, ANodeMethods, obj, ANode.prototype);
+  wrapMethods(newObj, ANodeMethods, ANode.prototype, obj);
   copyProperties(obj, newObj);
   return newObj;
 }
@@ -56605,7 +56732,7 @@ function copyProperties (source, destination) {
 var ANode = _dereq_('./a-node');
 var AEntity = _dereq_('./a-entity');
 
-},{"./a-entity":49,"./a-node":51,"document-register-element":8}],53:[function(_dereq_,module,exports){
+},{"./a-entity":50,"./a-node":52,"document-register-element":8}],54:[function(_dereq_,module,exports){
 /* global HTMLElement */
 var schema = _dereq_('./schema');
 var systems = _dereq_('./system');
@@ -56633,20 +56760,11 @@ var styleParser = utils.styleParser;
  * @member {object} el - Reference to the entity element.
  * @member {string} name - Component name exposed as an HTML attribute.
  */
-var Component = module.exports.Component = function (el) {
-  var name = this.name;
-  var elData = HTMLElement.prototype.getAttribute.call(el, name);
-
+var Component = module.exports.Component = function (el, attr) {
   this.el = el;
-  // Check whether we need to rebuild the schema depending on the data.
-  // Call buildData with silent flag to suppress warnings when parsing data before updating
-  // the schema.
-  if (this.updateSchema) {
-    this.updateSchema(buildData(el, name, this.schema, elData, true));
-  }
-  this.data = buildData(el, name, this.schema, elData);
-  this.init();
-  this.update();
+  this.updateCachedAttrValue(attr);
+  if (!el.hasLoaded) { return; }
+  this.updateProperties();
 };
 
 Component.prototype = {
@@ -56727,7 +56845,6 @@ Component.prototype = {
   stringify: function (data) {
     var schema = this.schema;
     if (typeof data === 'string') { return data; }
-
     if (isSingleProp(schema)) { return stringifyProperty(data, schema); }
     data = stringifyProperties(data, schema);
     return styleParser.stringify(data);
@@ -56745,6 +56862,61 @@ Component.prototype = {
   },
 
   /**
+   * Update the cache of the preparsed attribute value
+   *
+   * @param {string} value - HTML attribute value.
+   */
+  updateCachedAttrValue: function (value) {
+    var isSinglePropSchema = isSingleProp(this.schema);
+    if (value === '') {
+      this.attrValue = undefined;
+      return;
+    }
+    if (typeof value === 'string') {
+      this.attrValue = this.parseAttrValueForCache(value);
+      return;
+    }
+    this.attrValue = value !== undefined ? extendProperties({}, value, isSinglePropSchema) : this.attrValue;
+  },
+
+  /**
+   * Given an HTML attribute value parses the string
+   * based on the component schema. To avoid double parsings of
+   * strings into strings we store the original instead
+   * of the parsed one
+   *
+   * @param {string} value - HTML attribute value
+   */
+  parseAttrValueForCache: function (value) {
+    var parsedValue;
+    if (typeof value !== 'string') { return value; }
+    if (isSingleProp(this.schema)) {
+      parsedValue = this.schema.parse(value);
+      // To avoid bogus double parsings. The cached values will
+      // be parsed when building the component data.
+      // For instance when parsing a src id to it's url.
+      // We want to cache the original string and not the parsed
+      // one (#monster -> models/monster.dae) so when building
+      // data we parse the expected value.
+      if (typeof parsedValue === 'string') { parsedValue = value; }
+    } else {
+      // We just parse using the style parser to avoid double parsing
+      // of individual properties.
+      parsedValue = styleParser.parse(value);
+    }
+    return parsedValue;
+  },
+
+  /**
+   * Writes cached attribute data to the entity DOM element.
+   */
+  flushToDOM: function () {
+    var attrValue = this.attrValue;
+    if (!attrValue) { return; }
+    HTMLElement.prototype.setAttribute.call(this.el, this.name, this.stringify(attrValue));
+  },
+
+  /**
    * Apply new component data if data has changed.
    *
    * @param {string} value - HTML attribute value.
@@ -56753,15 +56925,19 @@ Component.prototype = {
     var el = this.el;
     var isSinglePropSchema = isSingleProp(this.schema);
     var previousData = extendProperties({}, this.data, isSinglePropSchema);
-
+    this.updateCachedAttrValue(value);
     if (this.updateSchema) {
-      this.updateSchema(buildData(el, this.name, this.schema, value, true));
+      this.updateSchema(buildData(el, this.name, this.schema, this.attrValue, true));
     }
-    this.data = buildData(el, this.name, this.schema, value);
+    this.data = buildData(el, this.name, this.schema, this.attrValue);
 
     // Don't update if properties haven't changed
     if (!isSinglePropSchema && utils.deepEqual(previousData, this.data)) { return; }
 
+    if (!this.initialized) {
+      this.init();
+      this.initialized = true;
+    }
     this.update(previousData);
 
     el.emit('componentchanged', {
@@ -56814,8 +56990,8 @@ module.exports.registerComponent = function (name, definition) {
                     'Check that you are not loading two versions of the same component ' +
                     'or two different components of the same name.');
   }
-  NewComponent = function (el) {
-    Component.call(this, el);
+  NewComponent = function (el, attr) {
+    Component.call(this, el, attr);
   };
   NewComponent.prototype = Object.create(Component.prototype, proto);
   NewComponent.prototype.name = name;
@@ -56826,6 +57002,7 @@ module.exports.registerComponent = function (name, definition) {
     Component: NewComponent,
     dependencies: NewComponent.prototype.dependencies,
     parse: NewComponent.prototype.parse.bind(NewComponent.prototype),
+    parseAttrValueForCache: NewComponent.prototype.parseAttrValueForCache.bind(NewComponent.prototype),
     schema: utils.extend(processSchema(NewComponent.prototype.schema)),
     stringify: NewComponent.prototype.stringify.bind(NewComponent.prototype),
     type: NewComponent.prototype.type
@@ -56854,19 +57031,16 @@ module.exports.registerComponent = function (name, definition) {
  * @return {object} The component data
  */
 function buildData (el, name, schema, elData, silent) {
-  var componentDefined = elData !== null;
-  var data = {};
+  var componentDefined = !!elData;
+  var data;
   var isSinglePropSchema = isSingleProp(schema);
   var mixinEls = el.mixinEls;
-
-  if (!isSinglePropSchema && typeof elData === 'string') {
-    elData = styleParser.parse(elData);
-  }
 
   // 1. Default values (lowest precendence).
   if (isSinglePropSchema) {
     data = schema.default;
   } else {
+    data = {};
     Object.keys(schema).forEach(function applyDefault (key) {
       data[key] = schema[key].default;
     });
@@ -56875,25 +57049,22 @@ function buildData (el, name, schema, elData, silent) {
   // 2. Mixin values.
   mixinEls.forEach(applyMixin);
   function applyMixin (mixinEl) {
-    var mixinData = HTMLElement.prototype.getAttribute.call(mixinEl, name);
+    var mixinData = mixinEl.getAttribute(name);
     if (mixinData) {
-      mixinData = isSinglePropSchema
-        ? mixinData : styleParser.parse(mixinData);
       data = extendProperties(data, mixinData, isSinglePropSchema);
     }
   }
 
   // 3. Attribute values (highest precendence).
   if (componentDefined) {
+    if (isSinglePropSchema) { return parseProperty(elData, schema); }
     data = extendProperties(data, elData, isSinglePropSchema);
+    return parseProperties(data, schema, undefined, silent);
+  } else {
+     // Parse and coerce using the schema.
+    if (isSinglePropSchema) { return parseProperty(elData !== undefined ? elData : data, schema); }
+    return parseProperties(data, schema, undefined, silent);
   }
-
-  // Parse and coerce using the schema.
-  if (isSingleProp(schema)) {
-    return parseProperty(data, schema);
-  }
-
-  return parseProperties(data, schema, undefined, silent);
 }
 module.exports.buildData = buildData;
 
@@ -56907,7 +57078,7 @@ module.exports.buildData = buildData;
 */
 function extendProperties (dest, source, isSinglePropSchema) {
   if (isSinglePropSchema) {
-    if (source === undefined ||
+    if (source === undefined || source === null ||
         (typeof source === 'object' && Object.keys(source).length === 0)) {
       return dest;
     }
@@ -56916,7 +57087,7 @@ function extendProperties (dest, source, isSinglePropSchema) {
   return utils.extend(dest, source);
 }
 
-},{"../utils/":113,"./schema":60,"./system":62}],54:[function(_dereq_,module,exports){
+},{"../utils/":114,"./schema":61,"./system":63}],55:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -56990,7 +57161,7 @@ module.exports.registerGeometry = function (name, definition) {
   return NewGeometry;
 };
 
-},{"../lib/three":100,"./schema":60}],55:[function(_dereq_,module,exports){
+},{"../lib/three":101,"./schema":61}],56:[function(_dereq_,module,exports){
 var coordinates = _dereq_('../utils/coordinates');
 var debug = _dereq_('debug');
 
@@ -57121,7 +57292,7 @@ function vecParse (value) {
   return coordinates.parse(value, this.default);
 }
 
-},{"../utils/coordinates":111,"debug":3}],56:[function(_dereq_,module,exports){
+},{"../utils/coordinates":112,"debug":3}],57:[function(_dereq_,module,exports){
 /* global Promise */
 var initFullscreen = _dereq_('./fullscreen');
 var initMetaTags = _dereq_('./metaTags').inject;
@@ -57183,7 +57354,7 @@ var AScene = module.exports = registerElement('a-scene', {
       value: function () {
         this.behaviors = [];
         this.hasLoaded = false;
-        this.isPlaying = true;
+        this.isPlaying = false;
         this.originalHTML = this.innerHTML;
         this.setupSystems();
         this.addEventListener('render-target-loaded', function () {
@@ -57292,8 +57463,8 @@ var AScene = module.exports = registerElement('a-scene', {
         // Possible camera or canvas not injected yet.
         if (!camera || !canvas) { return; }
 
-        // Update canvas.
-        if (!isMobile) {
+        // Update canvas if canvas was provided by A-Frame.
+        if (!isMobile && canvas.dataset.aframeDefault) {
           canvas.style.width = '100%';
           canvas.style.height = '100%';
         }
@@ -57355,7 +57526,6 @@ var AScene = module.exports = registerElement('a-scene', {
     play: {
       value: function () {
         var self = this;
-
         if (this.renderStarted) {
           AEntity.prototype.play.call(this);
           return;
@@ -57482,7 +57652,7 @@ function setFullscreen (canvas) {
   }
 }
 
-},{"../../lib/three":100,"../../utils/":113,"../a-entity":49,"../a-node":51,"../a-register-element":52,"../system":62,"./fullscreen":57,"./metaTags":58,"./wakelock":59,"tween.js":19}],57:[function(_dereq_,module,exports){
+},{"../../lib/three":101,"../../utils/":114,"../a-entity":50,"../a-node":52,"../a-register-element":53,"../system":63,"./fullscreen":58,"./metaTags":59,"./wakelock":60,"tween.js":19}],58:[function(_dereq_,module,exports){
 var isIframed = _dereq_('../../utils/').isIframed;
 
 /**
@@ -57548,7 +57718,7 @@ function exitFullscreenHandler (scene) {
   scene.emit('fullscreen-exit');
 }
 
-},{"../../utils/":113}],58:[function(_dereq_,module,exports){
+},{"../../utils/":114}],59:[function(_dereq_,module,exports){
 var extend = _dereq_('../../utils').extend;
 
 var MOBILE_HEAD_TAGS = module.exports.MOBILE_HEAD_TAGS = [
@@ -57628,7 +57798,7 @@ function createTag (tagObj) {
   return extend(meta, tagObj.attributes);
 }
 
-},{"../../utils":113}],59:[function(_dereq_,module,exports){
+},{"../../utils":114}],60:[function(_dereq_,module,exports){
 var Wakelock = _dereq_('../../../vendor/wakelock/wakelock');
 
 module.exports = function initWakelock (scene) {
@@ -57639,7 +57809,7 @@ module.exports = function initWakelock (scene) {
   scene.addEventListener('exit-vr', function () { wakelock.release(); });
 };
 
-},{"../../../vendor/wakelock/wakelock":120}],60:[function(_dereq_,module,exports){
+},{"../../../vendor/wakelock/wakelock":121}],61:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var propertyTypes = _dereq_('./propertyTypes').propertyTypes;
 var warn = debug('core:schema:warn');
@@ -57796,7 +57966,7 @@ function stringifyProperty (value, propDefinition) {
 }
 module.exports.stringifyProperty = stringifyProperty;
 
-},{"../utils/debug":112,"./propertyTypes":55}],61:[function(_dereq_,module,exports){
+},{"../utils/debug":113,"./propertyTypes":56}],62:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -57955,7 +58125,7 @@ module.exports.registerShader = function (name, definition) {
   return NewShader;
 };
 
-},{"../lib/three":100,"./schema":60}],62:[function(_dereq_,module,exports){
+},{"../lib/three":101,"./schema":61}],63:[function(_dereq_,module,exports){
 var components = _dereq_('./component');
 var systems = module.exports.systems = {};  // Keep track of registered components.
 
@@ -58039,10 +58209,10 @@ module.exports.registerSystem = function (name, definition) {
   for (i = 0; i < scenes.length; i++) { scenes[i].initSystem(name); }
 };
 
-},{"./component":53}],63:[function(_dereq_,module,exports){
+},{"./component":54}],64:[function(_dereq_,module,exports){
 _dereq_('./pivot');
 
-},{"./pivot":64}],64:[function(_dereq_,module,exports){
+},{"./pivot":65}],65:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 
@@ -58091,7 +58261,7 @@ registerComponent('pivot', {
   }
 });
 
-},{"../../core/component":53,"../../lib/three":100}],65:[function(_dereq_,module,exports){
+},{"../../core/component":54,"../../lib/three":101}],66:[function(_dereq_,module,exports){
 var ANode = _dereq_('../../core/a-node');
 var registerElement = _dereq_('../../core/a-register-element').registerElement;
 
@@ -58200,7 +58370,7 @@ module.exports = registerElement('a-event', {
   })
 });
 
-},{"../../core/a-node":51,"../../core/a-register-element":52}],66:[function(_dereq_,module,exports){
+},{"../../core/a-node":52,"../../core/a-register-element":53}],67:[function(_dereq_,module,exports){
 /**
  * Common mesh defaults, mappings, and transforms.
  */
@@ -58233,7 +58403,7 @@ module.exports = function getMeshMixin () {
   };
 };
 
-},{}],67:[function(_dereq_,module,exports){
+},{}],68:[function(_dereq_,module,exports){
 _dereq_('./primitives/a-box');
 _dereq_('./primitives/a-camera');
 _dereq_('./primitives/a-circle');
@@ -58254,7 +58424,7 @@ _dereq_('./primitives/a-torus');
 _dereq_('./primitives/a-video');
 _dereq_('./primitives/a-videosphere');
 
-},{"./primitives/a-box":68,"./primitives/a-camera":69,"./primitives/a-circle":70,"./primitives/a-collada-model":71,"./primitives/a-cone":72,"./primitives/a-cursor":73,"./primitives/a-curvedimage":74,"./primitives/a-cylinder":75,"./primitives/a-image":76,"./primitives/a-light":77,"./primitives/a-model":78,"./primitives/a-obj-model":79,"./primitives/a-plane":80,"./primitives/a-ring":81,"./primitives/a-sky":82,"./primitives/a-sphere":83,"./primitives/a-torus":84,"./primitives/a-video":85,"./primitives/a-videosphere":86}],68:[function(_dereq_,module,exports){
+},{"./primitives/a-box":69,"./primitives/a-camera":70,"./primitives/a-circle":71,"./primitives/a-collada-model":72,"./primitives/a-cone":73,"./primitives/a-cursor":74,"./primitives/a-curvedimage":75,"./primitives/a-cylinder":76,"./primitives/a-image":77,"./primitives/a-light":78,"./primitives/a-model":79,"./primitives/a-obj-model":80,"./primitives/a-plane":81,"./primitives/a-ring":82,"./primitives/a-sky":83,"./primitives/a-sphere":84,"./primitives/a-torus":85,"./primitives/a-video":86,"./primitives/a-videosphere":87}],69:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58279,7 +58449,7 @@ registerPrimitive('a-cube', utils.extendDeep({
   deprecated: '<a-cube> is deprecated. Use <a-box> instead.'
 }, boxDefinition));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],69:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],70:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../registerPrimitive');
 
 registerPrimitive('a-camera', {
@@ -58308,7 +58478,7 @@ registerPrimitive('a-camera', {
   }
 });
 
-},{"../registerPrimitive":87}],70:[function(_dereq_,module,exports){
+},{"../registerPrimitive":88}],71:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58328,7 +58498,7 @@ registerPrimitive('a-circle', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],71:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],72:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58339,7 +58509,7 @@ registerPrimitive('a-collada-model', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],72:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],73:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58364,7 +58534,7 @@ registerPrimitive('a-cone', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],73:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],74:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58400,7 +58570,7 @@ registerPrimitive('a-cursor', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],74:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],75:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58438,7 +58608,7 @@ registerPrimitive('a-curvedimage', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],75:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],76:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58463,7 +58633,7 @@ registerPrimitive('a-cylinder', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],76:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],77:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58488,7 +58658,7 @@ registerPrimitive('a-image', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],77:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],78:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../registerPrimitive');
 
 registerPrimitive('a-light', {
@@ -58508,7 +58678,7 @@ registerPrimitive('a-light', {
   }
 });
 
-},{"../registerPrimitive":87}],78:[function(_dereq_,module,exports){
+},{"../registerPrimitive":88}],79:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58531,7 +58701,7 @@ registerPrimitive('a-model', utils.extend({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],79:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],80:[function(_dereq_,module,exports){
 var meshMixin = _dereq_('../getMeshMixin')();
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58547,7 +58717,7 @@ registerPrimitive('a-obj-model', utils.extendDeep({}, meshMixin, {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],80:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],81:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58566,7 +58736,7 @@ registerPrimitive('a-plane', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],81:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],82:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58588,7 +58758,7 @@ registerPrimitive('a-ring', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],82:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],83:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58615,7 +58785,7 @@ registerPrimitive('a-sky', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],83:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],84:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58635,7 +58805,7 @@ registerPrimitive('a-sphere', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],84:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],85:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58656,7 +58826,7 @@ registerPrimitive('a-torus', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],85:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],86:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58681,7 +58851,7 @@ registerPrimitive('a-video', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],86:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],87:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../registerPrimitive');
 var utils = _dereq_('../../../utils/');
@@ -58708,7 +58878,7 @@ registerPrimitive('a-videosphere', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":113,"../getMeshMixin":66,"../registerPrimitive":87}],87:[function(_dereq_,module,exports){
+},{"../../../utils/":114,"../getMeshMixin":67,"../registerPrimitive":88}],88:[function(_dereq_,module,exports){
 var AEntity = _dereq_('../../core/a-entity');
 var components = _dereq_('../../core/component').components;
 var registerElement = _dereq_('../../core/a-register-element').registerElement;
@@ -58756,9 +58926,7 @@ module.exports = function registerPrimitive (name, definition) {
         value: function () {
           var self = this;
           var attributes = this.attributes;
-
           this.applyDefaultComponents();
-
           // Apply initial attributes.
           Object.keys(attributes).forEach(function applyInitial (attributeName) {
             var attr = attributes[attributeName];
@@ -58772,10 +58940,6 @@ module.exports = function registerPrimitive (name, definition) {
        */
       attributeChangedCallback: {
         value: function (attr, oldVal, newVal) {
-          if (!this.mappings[attr]) {
-            AEntity.prototype.attributeChangedCallback.call(this, attr, oldVal, newVal);
-            return;
-          }
           this.syncAttributeToComponent(attr, newVal);
         }
       },
@@ -58784,20 +58948,20 @@ module.exports = function registerPrimitive (name, definition) {
         value: function () {
           var self = this;
           var defaultData = this.defaultAttributes;
-
           // Apply default components.
           Object.keys(defaultData).forEach(function applyDefault (componentName) {
             var componentData = defaultData[componentName];
-
             // Set component properties individually to not overwrite user-defined components.
             if (componentData instanceof Object && Object.keys(componentData).length) {
+              var component = components[componentName];
+              var attrValues = self.getAttribute(componentName) || {};
+              var data = component.parse(attrValues);
               Object.keys(componentData).forEach(function setProperty (propName) {
                 // Check if component property already defined.
-                var definedData = self.getAttribute(componentName);
-                if (definedData && definedData[propName] !== undefined) { return; }
-
-                self.setAttribute(componentName, propName, componentData[propName]);
+                if (data[propName]) { return; }
+                data[propName] = componentData[propName];
               });
+              self.setAttribute(componentName, data);
               return;
             }
 
@@ -58860,7 +59024,7 @@ module.exports = function registerPrimitive (name, definition) {
   });
 };
 
-},{"../../core/a-entity":49,"../../core/a-register-element":52,"../../core/component":53,"../../utils/":113}],88:[function(_dereq_,module,exports){
+},{"../../core/a-entity":50,"../../core/a-register-element":53,"../../core/component":54,"../../utils/":114}],89:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -58876,7 +59040,7 @@ registerGeometry('box', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],89:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],90:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -58896,7 +59060,7 @@ registerGeometry('circle', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],90:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],91:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -58922,7 +59086,7 @@ registerGeometry('cone', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],91:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],92:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -58946,7 +59110,7 @@ registerGeometry('cylinder', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],92:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],93:[function(_dereq_,module,exports){
 _dereq_('./box.js');
 _dereq_('./circle.js');
 _dereq_('./cone.js');
@@ -58957,7 +59121,7 @@ _dereq_('./sphere.js');
 _dereq_('./torus.js');
 _dereq_('./torusKnot.js');
 
-},{"./box.js":88,"./circle.js":89,"./cone.js":90,"./cylinder.js":91,"./plane.js":93,"./ring.js":94,"./sphere.js":95,"./torus.js":96,"./torusKnot.js":97}],93:[function(_dereq_,module,exports){
+},{"./box.js":89,"./circle.js":90,"./cone.js":91,"./cylinder.js":92,"./plane.js":94,"./ring.js":95,"./sphere.js":96,"./torus.js":97,"./torusKnot.js":98}],94:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -58972,7 +59136,7 @@ registerGeometry('plane', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],94:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],95:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -58995,7 +59159,7 @@ registerGeometry('ring', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],95:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],96:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -59020,7 +59184,7 @@ registerGeometry('sphere', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],96:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],97:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -59042,7 +59206,7 @@ registerGeometry('torus', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],97:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],98:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -59063,7 +59227,7 @@ registerGeometry('torusKnot', {
   }
 });
 
-},{"../core/geometry":54,"../lib/three":100}],98:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../lib/three":101}],99:[function(_dereq_,module,exports){
 // Polyfill `Promise`.
 window.Promise = window.Promise || _dereq_('promise-polyfill');
 
@@ -59096,7 +59260,7 @@ _dereq_('./systems/index'); // Register standard systems.
 var ANode = _dereq_('./core/a-node');
 var AEntity = _dereq_('./core/a-entity'); // Depends on ANode and core components.
 
-// Webvr polyfill configuration.
+// WebVR polyfill configuration.
 window.hasNonPolyfillWebVRSupport = !!navigator.getVRDevices || !!navigator.getVRDisplays;
 window.WebVRConfig = window.WebVRConfig || {
   TOUCH_PANNER_DISABLED: true,
@@ -59136,7 +59300,7 @@ module.exports = window.AFRAME = {
   version: pkg.version
 };
 
-},{"../package":21,"./components/index":26,"./core/a-animation":46,"./core/a-assets":47,"./core/a-cubemap":48,"./core/a-entity":49,"./core/a-mixin":50,"./core/a-node":51,"./core/component":53,"./core/geometry":54,"./core/scene/a-scene":56,"./core/shader":61,"./core/system":62,"./extras/components/":63,"./extras/declarative-events/":65,"./extras/primitives/":67,"./extras/primitives/registerPrimitive":87,"./geometries/index":92,"./lib/three":100,"./shaders/index":102,"./style/aframe.css":104,"./style/rStats.css":105,"./systems/index":108,"./utils/":113,"present":10,"promise-polyfill":11,"tween.js":19,"webvr-polyfill":20}],99:[function(_dereq_,module,exports){
+},{"../package":21,"./components/index":26,"./core/a-animation":47,"./core/a-assets":48,"./core/a-cubemap":49,"./core/a-entity":50,"./core/a-mixin":51,"./core/a-node":52,"./core/component":54,"./core/geometry":55,"./core/scene/a-scene":57,"./core/shader":62,"./core/system":63,"./extras/components/":64,"./extras/declarative-events/":66,"./extras/primitives/":68,"./extras/primitives/registerPrimitive":88,"./geometries/index":93,"./lib/three":101,"./shaders/index":103,"./style/aframe.css":105,"./style/rStats.css":106,"./systems/index":109,"./utils/":114,"present":10,"promise-polyfill":11,"tween.js":19,"webvr-polyfill":20}],100:[function(_dereq_,module,exports){
 window.aframeStats = function (scene) {
   var _rS = null;
   var _scene = scene;
@@ -59183,7 +59347,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],100:[function(_dereq_,module,exports){
+},{}],101:[function(_dereq_,module,exports){
 (function (global){
 var THREE = global.THREE = _dereq_('three');
 
@@ -59216,7 +59380,7 @@ module.exports = THREE;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../node_modules/three/examples/js/controls/VRControls":13,"../../node_modules/three/examples/js/effects/VREffect":14,"../../node_modules/three/examples/js/loaders/ColladaLoader":15,"../../node_modules/three/examples/js/loaders/MTLLoader":16,"../../node_modules/three/examples/js/loaders/OBJLoader":17,"three":18}],101:[function(_dereq_,module,exports){
+},{"../../node_modules/three/examples/js/controls/VRControls":13,"../../node_modules/three/examples/js/effects/VREffect":14,"../../node_modules/three/examples/js/loaders/ColladaLoader":15,"../../node_modules/three/examples/js/loaders/MTLLoader":16,"../../node_modules/three/examples/js/loaders/OBJLoader":17,"three":18}],102:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -59306,11 +59470,11 @@ function getMaterialData (data) {
   return materialData;
 }
 
-},{"../core/shader":61,"../lib/three":100,"../utils/":113}],102:[function(_dereq_,module,exports){
+},{"../core/shader":62,"../lib/three":101,"../utils/":114}],103:[function(_dereq_,module,exports){
 _dereq_('./flat');
 _dereq_('./standard');
 
-},{"./flat":101,"./standard":103}],103:[function(_dereq_,module,exports){
+},{"./flat":102,"./standard":104}],104:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -59446,11 +59610,11 @@ function getMaterialData (data) {
   return materialData;
 }
 
-},{"../core/shader":61,"../lib/three":100,"../utils/":113}],104:[function(_dereq_,module,exports){
-var css = "html{bottom:0;left:0;position:fixed;right:0;top:0}body{height:100%;margin:0;overflow:hidden;padding:0;width:100%}.a-hidden{display:none!important}.a-canvas{height:100%;left:0;position:absolute;top:0;width:100%}a-assets,a-scene audio,a-scene img,a-scene video{display:none}.a-enter-vr-modal,.a-orientation-modal{font-family:Andale Mono,Courier New,monospace}.a-enter-vr-modal{font-size:11px;line-height:17px}.a-enter-vr-modal a{border-bottom:1px solid #fff;padding:2px 0;text-decoration:none;transition:.1s color ease-in}.a-enter-vr-modal a:hover{background-color:#fff;color:#111;padding:2px 4px;position:relative;left:-4px}.a-enter-vr{align-items:flex-end;-webkit-align-items:flex-end;bottom:5px;display:flex;display:-webkit-flex;font-family:sans-serif,monospace;font-size:13px;font-weight:200;line-height:16px;height:72px;position:fixed;right:5px}.a-enter-vr-button,.a-enter-vr-modal,.a-enter-vr-modal a{color:#fff}.a-enter-vr-button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245.82%20141.73%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Emask%3C%2Ftitle%3E%3Cpath%20class%3D%22a%22%20d%3D%22M175.56%2C111.37c-22.52%2C0-40.77-18.84-40.77-42.07S153%2C27.24%2C175.56%2C27.24s40.77%2C18.84%2C40.77%2C42.07S198.08%2C111.37%2C175.56%2C111.37ZM26.84%2C69.31c0-23.23%2C18.25-42.07%2C40.77-42.07s40.77%2C18.84%2C40.77%2C42.07-18.26%2C42.07-40.77%2C42.07S26.84%2C92.54%2C26.84%2C69.31ZM27.27%2C0C11.54%2C0%2C0%2C12.34%2C0%2C28.58V110.9c0%2C16.24%2C11.54%2C30.83%2C27.27%2C30.83H99.57c2.17%2C0%2C4.19-1.83%2C5.4-3.7L116.47%2C118a8%2C8%2C0%2C0%2C1%2C12.52-.18l11.51%2C20.34c1.2%2C1.86%2C3.22%2C3.61%2C5.39%2C3.61h72.29c15.74%2C0%2C27.63-14.6%2C27.63-30.83V28.58C245.82%2C12.34%2C233.93%2C0%2C218.19%2C0H27.27Z%22%2F%3E%3C%2Fsvg%3E) 50% 50%/70% 70% no-repeat rgba(0,0,0,.35);border:0;bottom:0;cursor:pointer;height:50px;position:absolute;right:0;transition:background-color .05s ease;-webkit-transition:background-color .05s ease;width:60px;z-index:999999}.a-enter-vr-button:active,.a-enter-vr-button:hover{background-color:#666}[data-a-enter-vr-no-webvr] .a-enter-vr-button{border-color:#666;opacity:.65}[data-a-enter-vr-no-webvr] .a-enter-vr-button:active,[data-a-enter-vr-no-webvr] .a-enter-vr-button:hover{background-color:rgba(0,0,0,.35);cursor:not-allowed}.a-enter-vr-modal{background-color:#666;border-radius:0;display:none;min-height:32px;margin-right:70px;padding:9px;width:280px;position:relative}.a-enter-vr-modal:after{border-bottom:10px solid transparent;border-left:10px solid #666;border-top:10px solid transparent;display:inline-block;content:'';position:absolute;right:-5px;top:5px;width:0;height:0}.a-enter-vr-modal a,.a-enter-vr-modal p{display:inline}.a-enter-vr-modal p{margin:0}.a-enter-vr-modal p:after{content:' '}[data-a-enter-vr-no-headset].a-enter-vr:hover .a-enter-vr-modal,[data-a-enter-vr-no-webvr].a-enter-vr:hover .a-enter-vr-modal{display:block}.a-orientation-modal{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2090%2090%22%20enable-background%3D%22new%200%200%2090%2090%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%220%2C0%200%2C0%200%2C0%20%22%3E%3C/polygon%3E%3Cg%3E%3Cpath%20d%3D%22M71.545%2C48.145h-31.98V20.743c0-2.627-2.138-4.765-4.765-4.765H18.456c-2.628%2C0-4.767%2C2.138-4.767%2C4.765v42.789%20%20%20c0%2C2.628%2C2.138%2C4.766%2C4.767%2C4.766h5.535v0.959c0%2C2.628%2C2.138%2C4.765%2C4.766%2C4.765h42.788c2.628%2C0%2C4.766-2.137%2C4.766-4.765V52.914%20%20%20C76.311%2C50.284%2C74.173%2C48.145%2C71.545%2C48.145z%20M18.455%2C16.935h16.344c2.1%2C0%2C3.808%2C1.708%2C3.808%2C3.808v27.401H37.25V22.636%20%20%20c0-0.264-0.215-0.478-0.479-0.478H16.482c-0.264%2C0-0.479%2C0.214-0.479%2C0.478v36.585c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h7.507v7.644%20%20%20h-5.534c-2.101%2C0-3.81-1.709-3.81-3.81V20.743C14.645%2C18.643%2C16.354%2C16.935%2C18.455%2C16.935z%20M16.96%2C23.116h19.331v25.031h-7.535%20%20%20c-2.628%2C0-4.766%2C2.139-4.766%2C4.768v5.828h-7.03V23.116z%20M71.545%2C73.064H28.757c-2.101%2C0-3.81-1.708-3.81-3.808V52.914%20%20%20c0-2.102%2C1.709-3.812%2C3.81-3.812h42.788c2.1%2C0%2C3.809%2C1.71%2C3.809%2C3.812v16.343C75.354%2C71.356%2C73.645%2C73.064%2C71.545%2C73.064z%22%3E%3C/path%3E%3Cpath%20d%3D%22M28.919%2C58.424c-1.466%2C0-2.659%2C1.193-2.659%2C2.66c0%2C1.466%2C1.193%2C2.658%2C2.659%2C2.658c1.468%2C0%2C2.662-1.192%2C2.662-2.658%20%20%20C31.581%2C59.617%2C30.387%2C58.424%2C28.919%2C58.424z%20M28.919%2C62.786c-0.939%2C0-1.703-0.764-1.703-1.702c0-0.939%2C0.764-1.704%2C1.703-1.704%20%20%20c0.94%2C0%2C1.705%2C0.765%2C1.705%2C1.704C30.623%2C62.022%2C29.858%2C62.786%2C28.919%2C62.786z%22%3E%3C/path%3E%3Cpath%20d%3D%22M69.654%2C50.461H33.069c-0.264%2C0-0.479%2C0.215-0.479%2C0.479v20.288c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h36.585%20%20%20c0.263%2C0%2C0.477-0.214%2C0.477-0.478V50.939C70.131%2C50.676%2C69.917%2C50.461%2C69.654%2C50.461z%20M69.174%2C51.417V70.75H33.548V51.417H69.174z%22%3E%3C/path%3E%3Cpath%20d%3D%22M45.201%2C30.296c6.651%2C0%2C12.233%2C5.351%2C12.551%2C11.977l-3.033-2.638c-0.193-0.165-0.507-0.142-0.675%2C0.048%20%20%20c-0.174%2C0.198-0.153%2C0.501%2C0.045%2C0.676l3.883%2C3.375c0.09%2C0.075%2C0.198%2C0.115%2C0.312%2C0.115c0.141%2C0%2C0.273-0.061%2C0.362-0.166%20%20%20l3.371-3.877c0.173-0.2%2C0.151-0.502-0.047-0.675c-0.194-0.166-0.508-0.144-0.676%2C0.048l-2.592%2C2.979%20%20%20c-0.18-3.417-1.629-6.605-4.099-9.001c-2.538-2.461-5.877-3.817-9.404-3.817c-0.264%2C0-0.479%2C0.215-0.479%2C0.479%20%20%20C44.72%2C30.083%2C44.936%2C30.296%2C45.201%2C30.296z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) center/50% 50% no-repeat rgba(244,244,244,1);font-size:14px;font-weight:600;height:100%;left:0;line-height:20px;position:absolute;top:0;width:100%}.a-orientation-modal:after{color:#666;content:\"Insert phone into Cardboard holder.\";display:block;position:absolute;text-align:center;top:70%;transform:translateY(-70%);width:100%}.a-orientation-modal button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20100%20100%22%20enable-background%3D%22new%200%200%20100%20100%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M55.209%2C50l17.803-17.803c1.416-1.416%2C1.416-3.713%2C0-5.129c-1.416-1.417-3.713-1.417-5.129%2C0L50.08%2C44.872%20%20L32.278%2C27.069c-1.416-1.417-3.714-1.417-5.129%2C0c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129L44.951%2C50L27.149%2C67.803%20%20c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129c0.708%2C0.708%2C1.636%2C1.062%2C2.564%2C1.062c0.928%2C0%2C1.856-0.354%2C2.564-1.062L50.08%2C55.13l17.803%2C17.802%20%20c0.708%2C0.708%2C1.637%2C1.062%2C2.564%2C1.062s1.856-0.354%2C2.564-1.062c1.416-1.416%2C1.416-3.713%2C0-5.129L55.209%2C50z%22%3E%3C/path%3E%3C/svg%3E) no-repeat;border:none;height:50px;text-indent:-9999px;width:50px}@media (min-width:480px){.a-enter-vr{bottom:20px;right:20px}.a-enter-vr-modal{width:400px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src/style/aframe.css"})); module.exports = css;
-},{"browserify-css":1}],105:[function(_dereq_,module,exports){
-var css = ".rs-base{background-color:#EF2D5E;border-radius:0;font:10px monospace;left:5px;line-height:1em;opacity:.75;overflow:hidden;padding:10px;position:fixed;top:5px;width:300px;z-index:10000}.rs-base div.hidden{display:none}.rs-base h1{color:#fff;cursor:pointer;font-size:1.4em;font-weight:300;margin:0 0 5px;padding:0}.rs-group{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;margin-bottom:5px}.rs-group:last-child{margin-bottom:0}.rs-counter-base{align-items:center;display:-webkit-box;display:-webkit-flex;display:flex;height:10px;-webkit-justify-content:space-between;justify-content:space-between;margin:2px 0}.rs-counter-id{font-weight:300;-webkit-box-ordinal-group:0;-webkit-order:0;order:0;width:50px}.rs-counter-value{font-weight:300;-webkit-box-ordinal-group:1;-webkit-order:1;order:1;text-align:right;width:35px}.rs-canvas{-webkit-box-ordinal-group:2;-webkit-order:2;order:2}@media (min-width:480px){.rs-base{left:20px;top:20px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src/style/rStats.css"})); module.exports = css;
+},{"../core/shader":62,"../lib/three":101,"../utils/":114}],105:[function(_dereq_,module,exports){
+var css = "html{bottom:0;left:0;position:fixed;right:0;top:0}body{height:100%;margin:0;overflow:hidden;padding:0;width:100%}.a-hidden{display:none!important}.a-canvas{height:100%;left:0;position:absolute;top:0;width:100%}a-assets,a-scene audio,a-scene img,a-scene video{display:none}.a-enter-vr-modal,.a-orientation-modal{font-family:Consolas,Andale Mono,Courier New,monospace}.a-enter-vr-modal{font-size:11px;line-height:15px}.a-enter-vr-modal a{border-bottom:1px solid #fff;padding:2px 0;text-decoration:none;transition:.1s color ease-in}.a-enter-vr-modal a:hover{background-color:#fff;color:#111;padding:2px 4px;position:relative;left:-4px}.a-enter-vr{align-items:flex-end;-webkit-align-items:flex-end;bottom:5px;display:flex;display:-webkit-flex;font-family:sans-serif,monospace;font-size:13px;font-weight:200;line-height:16px;height:72px;position:fixed;right:5px}.a-enter-vr-button,.a-enter-vr-modal,.a-enter-vr-modal a{color:#fff}.a-enter-vr-button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245.82%20141.73%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Emask%3C%2Ftitle%3E%3Cpath%20class%3D%22a%22%20d%3D%22M175.56%2C111.37c-22.52%2C0-40.77-18.84-40.77-42.07S153%2C27.24%2C175.56%2C27.24s40.77%2C18.84%2C40.77%2C42.07S198.08%2C111.37%2C175.56%2C111.37ZM26.84%2C69.31c0-23.23%2C18.25-42.07%2C40.77-42.07s40.77%2C18.84%2C40.77%2C42.07-18.26%2C42.07-40.77%2C42.07S26.84%2C92.54%2C26.84%2C69.31ZM27.27%2C0C11.54%2C0%2C0%2C12.34%2C0%2C28.58V110.9c0%2C16.24%2C11.54%2C30.83%2C27.27%2C30.83H99.57c2.17%2C0%2C4.19-1.83%2C5.4-3.7L116.47%2C118a8%2C8%2C0%2C0%2C1%2C12.52-.18l11.51%2C20.34c1.2%2C1.86%2C3.22%2C3.61%2C5.39%2C3.61h72.29c15.74%2C0%2C27.63-14.6%2C27.63-30.83V28.58C245.82%2C12.34%2C233.93%2C0%2C218.19%2C0H27.27Z%22%2F%3E%3C%2Fsvg%3E) 50% 50%/70% 70% no-repeat rgba(0,0,0,.35);border:0;bottom:0;cursor:pointer;height:50px;position:absolute;right:0;transition:background-color .05s ease;-webkit-transition:background-color .05s ease;width:60px;z-index:999999}.a-enter-vr-button:active,.a-enter-vr-button:hover{background-color:#666}[data-a-enter-vr-no-webvr] .a-enter-vr-button{border-color:#666;opacity:.65}[data-a-enter-vr-no-webvr] .a-enter-vr-button:active,[data-a-enter-vr-no-webvr] .a-enter-vr-button:hover{background-color:rgba(0,0,0,.35);cursor:not-allowed}.a-enter-vr-modal{background-color:#666;border-radius:0;display:none;min-height:32px;margin-right:70px;padding:9px;width:280px;position:relative}.a-enter-vr-modal:after{border-bottom:10px solid transparent;border-left:10px solid #666;border-top:10px solid transparent;display:inline-block;content:'';position:absolute;right:-5px;top:5px;width:0;height:0}.a-enter-vr-modal a,.a-enter-vr-modal p{display:inline}.a-enter-vr-modal p{margin:0}.a-enter-vr-modal p:after{content:' '}[data-a-enter-vr-no-headset].a-enter-vr:hover .a-enter-vr-modal,[data-a-enter-vr-no-webvr].a-enter-vr:hover .a-enter-vr-modal{display:block}.a-orientation-modal{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2090%2090%22%20enable-background%3D%22new%200%200%2090%2090%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%220%2C0%200%2C0%200%2C0%20%22%3E%3C/polygon%3E%3Cg%3E%3Cpath%20d%3D%22M71.545%2C48.145h-31.98V20.743c0-2.627-2.138-4.765-4.765-4.765H18.456c-2.628%2C0-4.767%2C2.138-4.767%2C4.765v42.789%20%20%20c0%2C2.628%2C2.138%2C4.766%2C4.767%2C4.766h5.535v0.959c0%2C2.628%2C2.138%2C4.765%2C4.766%2C4.765h42.788c2.628%2C0%2C4.766-2.137%2C4.766-4.765V52.914%20%20%20C76.311%2C50.284%2C74.173%2C48.145%2C71.545%2C48.145z%20M18.455%2C16.935h16.344c2.1%2C0%2C3.808%2C1.708%2C3.808%2C3.808v27.401H37.25V22.636%20%20%20c0-0.264-0.215-0.478-0.479-0.478H16.482c-0.264%2C0-0.479%2C0.214-0.479%2C0.478v36.585c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h7.507v7.644%20%20%20h-5.534c-2.101%2C0-3.81-1.709-3.81-3.81V20.743C14.645%2C18.643%2C16.354%2C16.935%2C18.455%2C16.935z%20M16.96%2C23.116h19.331v25.031h-7.535%20%20%20c-2.628%2C0-4.766%2C2.139-4.766%2C4.768v5.828h-7.03V23.116z%20M71.545%2C73.064H28.757c-2.101%2C0-3.81-1.708-3.81-3.808V52.914%20%20%20c0-2.102%2C1.709-3.812%2C3.81-3.812h42.788c2.1%2C0%2C3.809%2C1.71%2C3.809%2C3.812v16.343C75.354%2C71.356%2C73.645%2C73.064%2C71.545%2C73.064z%22%3E%3C/path%3E%3Cpath%20d%3D%22M28.919%2C58.424c-1.466%2C0-2.659%2C1.193-2.659%2C2.66c0%2C1.466%2C1.193%2C2.658%2C2.659%2C2.658c1.468%2C0%2C2.662-1.192%2C2.662-2.658%20%20%20C31.581%2C59.617%2C30.387%2C58.424%2C28.919%2C58.424z%20M28.919%2C62.786c-0.939%2C0-1.703-0.764-1.703-1.702c0-0.939%2C0.764-1.704%2C1.703-1.704%20%20%20c0.94%2C0%2C1.705%2C0.765%2C1.705%2C1.704C30.623%2C62.022%2C29.858%2C62.786%2C28.919%2C62.786z%22%3E%3C/path%3E%3Cpath%20d%3D%22M69.654%2C50.461H33.069c-0.264%2C0-0.479%2C0.215-0.479%2C0.479v20.288c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h36.585%20%20%20c0.263%2C0%2C0.477-0.214%2C0.477-0.478V50.939C70.131%2C50.676%2C69.917%2C50.461%2C69.654%2C50.461z%20M69.174%2C51.417V70.75H33.548V51.417H69.174z%22%3E%3C/path%3E%3Cpath%20d%3D%22M45.201%2C30.296c6.651%2C0%2C12.233%2C5.351%2C12.551%2C11.977l-3.033-2.638c-0.193-0.165-0.507-0.142-0.675%2C0.048%20%20%20c-0.174%2C0.198-0.153%2C0.501%2C0.045%2C0.676l3.883%2C3.375c0.09%2C0.075%2C0.198%2C0.115%2C0.312%2C0.115c0.141%2C0%2C0.273-0.061%2C0.362-0.166%20%20%20l3.371-3.877c0.173-0.2%2C0.151-0.502-0.047-0.675c-0.194-0.166-0.508-0.144-0.676%2C0.048l-2.592%2C2.979%20%20%20c-0.18-3.417-1.629-6.605-4.099-9.001c-2.538-2.461-5.877-3.817-9.404-3.817c-0.264%2C0-0.479%2C0.215-0.479%2C0.479%20%20%20C44.72%2C30.083%2C44.936%2C30.296%2C45.201%2C30.296z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) center/50% 50% no-repeat rgba(244,244,244,1);font-size:14px;font-weight:600;height:100%;left:0;line-height:20px;position:absolute;top:0;width:100%}.a-orientation-modal:after{color:#666;content:\"Insert phone into Cardboard holder.\";display:block;position:absolute;text-align:center;top:70%;transform:translateY(-70%);width:100%}.a-orientation-modal button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20100%20100%22%20enable-background%3D%22new%200%200%20100%20100%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M55.209%2C50l17.803-17.803c1.416-1.416%2C1.416-3.713%2C0-5.129c-1.416-1.417-3.713-1.417-5.129%2C0L50.08%2C44.872%20%20L32.278%2C27.069c-1.416-1.417-3.714-1.417-5.129%2C0c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129L44.951%2C50L27.149%2C67.803%20%20c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129c0.708%2C0.708%2C1.636%2C1.062%2C2.564%2C1.062c0.928%2C0%2C1.856-0.354%2C2.564-1.062L50.08%2C55.13l17.803%2C17.802%20%20c0.708%2C0.708%2C1.637%2C1.062%2C2.564%2C1.062s1.856-0.354%2C2.564-1.062c1.416-1.416%2C1.416-3.713%2C0-5.129L55.209%2C50z%22%3E%3C/path%3E%3C/svg%3E) no-repeat;border:none;height:50px;text-indent:-9999px;width:50px}@media (min-width:480px){.a-enter-vr{bottom:20px;right:20px}.a-enter-vr-modal{width:400px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src/style/aframe.css"})); module.exports = css;
 },{"browserify-css":1}],106:[function(_dereq_,module,exports){
+var css = ".rs-base{background-color:#EF2D5E;border-radius:0;font:10px monospace;left:5px;line-height:1em;opacity:.75;overflow:hidden;padding:10px;position:fixed;top:5px;width:300px;z-index:10000}.rs-base div.hidden{display:none}.rs-base h1{color:#fff;cursor:pointer;font-size:1.4em;font-weight:300;margin:0 0 5px;padding:0}.rs-group{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;margin-bottom:5px}.rs-group:last-child{margin-bottom:0}.rs-counter-base{align-items:center;display:-webkit-box;display:-webkit-flex;display:flex;height:10px;-webkit-justify-content:space-between;justify-content:space-between;margin:2px 0}.rs-counter-id{font-weight:300;-webkit-box-ordinal-group:0;-webkit-order:0;order:0;width:50px}.rs-counter-value{font-weight:300;-webkit-box-ordinal-group:1;-webkit-order:1;order:1;text-align:right;width:35px}.rs-canvas{-webkit-box-ordinal-group:2;-webkit-order:2;order:2}@media (min-width:480px){.rs-base{left:20px;top:20px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src/style/rStats.css"})); module.exports = css;
+},{"browserify-css":1}],107:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 
 var DEFAULT_CAMERA_ATTR = 'data-aframe-default-camera';
@@ -59476,13 +59640,11 @@ module.exports.System = registerSystem('camera', {
     var sceneEl = this.sceneEl;
     var cameraWrapperEl;
     var defaultCameraEl;
-
     // setTimeout in case the camera is being set dynamically with a setAttribute.
     setTimeout(function checkForCamera () {
-      var cameraEl = sceneEl.querySelector('[camera]');
-
-      if (cameraEl && cameraEl.isEntity) {
-        sceneEl.emit('camera-ready', {cameraEl: cameraEl});
+      var currentCamera = sceneEl.camera;
+      if (currentCamera) {
+        sceneEl.emit('camera-ready', { cameraEl: currentCamera.el });
         return;
       }
 
@@ -59492,8 +59654,8 @@ module.exports.System = registerSystem('camera', {
       cameraWrapperEl.setAttribute(DEFAULT_CAMERA_ATTR, '');
       defaultCameraEl = document.createElement('a-entity');
       defaultCameraEl.setAttribute('camera', {'active': true});
-      defaultCameraEl.setAttribute('wasd-controls');
-      defaultCameraEl.setAttribute('look-controls');
+      defaultCameraEl.setAttribute('wasd-controls', '');
+      defaultCameraEl.setAttribute('look-controls', '');
       cameraWrapperEl.appendChild(defaultCameraEl);
       sceneEl.appendChild(cameraWrapperEl);
       sceneEl.emit('camera-ready', {cameraEl: defaultCameraEl});
@@ -59507,9 +59669,8 @@ module.exports.System = registerSystem('camera', {
    * the new camera.
    */
   disableActiveCamera: function () {
-    var sceneEl = this.sceneEl;
-    var sceneCameras = sceneEl.querySelectorAll('[camera]');
-    var newActiveCameraEl = sceneCameras[sceneCameras.length - 1];
+    var cameraEls = this.sceneEl.querySelectorAll('[camera]');
+    var newActiveCameraEl = cameraEls[cameraEls.length - 1];
     newActiveCameraEl.setAttribute('camera', 'active', true);
   },
 
@@ -59519,14 +59680,15 @@ module.exports.System = registerSystem('camera', {
    * Disables all other cameras in the scene.
    *
    * @param {Element} newCameraEl - Entity with camera component.
-   * @param {object} newCamera - three.js Camera object.
    */
-  setActiveCamera: function (newCameraEl, newCamera) {
+  setActiveCamera: function (newCameraEl) {
     var cameraEl;
+    var cameraEls = this.sceneEl.querySelectorAll('[camera]');
     var i;
     var sceneEl = this.sceneEl;
-    var sceneCameraEls = sceneEl.querySelectorAll('[camera]');
-
+    var newCamera = newCameraEl.getObject3D('camera');
+    var previousCamera = this.activeCameraEl;
+    if (!newCamera || newCameraEl === this.activeCameraEl) { return; }
     // Grab the default camera.
     var defaultCameraWrapper = sceneEl.querySelector('[' + DEFAULT_CAMERA_ATTR + ']');
     var defaultCameraEl = defaultCameraWrapper &&
@@ -59536,14 +59698,16 @@ module.exports.System = registerSystem('camera', {
 
     // Make new camera active.
     this.activeCameraEl = newCameraEl;
-    if (sceneEl.isPlaying) { newCameraEl.play(); }
-    newCameraEl.setAttribute('camera', 'active', true);
     sceneEl.camera = newCamera;
     sceneEl.emit('camera-set-active', {cameraEl: newCameraEl});
 
-    // Disable other cameras.
-    for (i = 0; i < sceneCameraEls.length; i++) {
-      cameraEl = sceneCameraEls[i];
+    // Disable current camera
+    if (previousCamera) {
+      previousCamera.setAttribute('camera', 'active', false);
+    }
+    // Disable other cameras in the scene
+    for (i = 0; i < cameraEls.length; i++) {
+      cameraEl = cameraEls[i];
       if (newCameraEl === cameraEl) { continue; }
       cameraEl.setAttribute('camera', 'active', false);
       cameraEl.pause();
@@ -59567,7 +59731,7 @@ function removeDefaultCamera (sceneEl) {
   sceneEl.removeChild(defaultCameraWrapper);
 }
 
-},{"../core/system":62}],107:[function(_dereq_,module,exports){
+},{"../core/system":63}],108:[function(_dereq_,module,exports){
 var geometries = _dereq_('../core/geometry').geometries;
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
@@ -59702,13 +59866,13 @@ function toBufferGeometry (geometry, doBuffer) {
   return bufferGeometry;
 }
 
-},{"../core/geometry":54,"../core/system":62,"../lib/three":100}],108:[function(_dereq_,module,exports){
+},{"../core/geometry":55,"../core/system":63,"../lib/three":101}],109:[function(_dereq_,module,exports){
 _dereq_('./camera');
 _dereq_('./geometry');
 _dereq_('./material');
 _dereq_('./light');
 
-},{"./camera":106,"./geometry":107,"./light":109,"./material":110}],109:[function(_dereq_,module,exports){
+},{"./camera":107,"./geometry":108,"./light":110,"./material":111}],110:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 
 var DEFAULT_LIGHT_ATTR = 'data-aframe-default-light';
@@ -59770,7 +59934,7 @@ module.exports.System = registerSystem('light', {
   }
 });
 
-},{"../core/system":62}],110:[function(_dereq_,module,exports){
+},{"../core/system":63}],111:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -60069,7 +60233,7 @@ function fixVideoAttributes (videoEl) {
   return videoEl;
 }
 
-},{"../core/system":62,"../lib/three":100,"../utils/":113}],111:[function(_dereq_,module,exports){
+},{"../core/system":63,"../lib/three":101,"../utils/":114}],112:[function(_dereq_,module,exports){
 /* global THREE */
 
 // Coordinate string regex. Handles negative, positive, and decimals.
@@ -60143,7 +60307,7 @@ module.exports.toVector3 = function (vec3) {
   return new THREE.Vector3(vec3.x, vec3.y, vec3.z);
 };
 
-},{}],112:[function(_dereq_,module,exports){
+},{}],113:[function(_dereq_,module,exports){
 (function (process){
 var debugLib = _dereq_('debug');
 var extend = _dereq_('object-assign');
@@ -60240,7 +60404,7 @@ module.exports = debug;
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":2,"debug":3,"object-assign":9}],113:[function(_dereq_,module,exports){
+},{"_process":2,"debug":3,"object-assign":9}],114:[function(_dereq_,module,exports){
 /* global CustomEvent, location */
 /* Centralized place to reference utilities since utils is exposed to the user. */
 
@@ -60457,7 +60621,7 @@ module.exports.isIframed = function () {
 // Must be at bottom to avoid circular dependency.
 module.exports.srcLoader = _dereq_('./src-loader');
 
-},{"./coordinates":111,"./debug":112,"./material":114,"./src-loader":115,"./styleParser":116,"deep-assign":6,"object-assign":9}],114:[function(_dereq_,module,exports){
+},{"./coordinates":112,"./debug":113,"./material":115,"./src-loader":116,"./styleParser":117,"deep-assign":6,"object-assign":9}],115:[function(_dereq_,module,exports){
 /**
  * Set material texture and update if necessary.
  *
@@ -60475,7 +60639,7 @@ module.exports.updateMaterialTexture = function (material, texture) {
   }
 };
 
-},{}],115:[function(_dereq_,module,exports){
+},{}],116:[function(_dereq_,module,exports){
 /* global Image */
 var debug = _dereq_('./debug');
 
@@ -60620,7 +60784,7 @@ module.exports = {
   validateCubemapSrc: validateCubemapSrc
 };
 
-},{"./debug":112}],116:[function(_dereq_,module,exports){
+},{"./debug":113}],117:[function(_dereq_,module,exports){
 /* Utils for parsing style-like strings (e.g., "primitive: box; width: 5; height: 4.5"). */
 var styleParser = _dereq_('style-attr');
 
@@ -60634,6 +60798,8 @@ module.exports.parse = function (value) {
   var parsedData;
   if (typeof value !== 'string') { return value; }
   parsedData = styleParser.parse(value);
+  // The style parser returns an object { "" : "test"} when fed a string
+  if (parsedData['']) { return value; }
   return transformKeysToCamelCase(parsedData);
 };
 
@@ -60678,7 +60844,7 @@ function transformKeysToCamelCase (obj) {
 }
 module.exports.transformKeysToCamelCase = transformKeysToCamelCase;
 
-},{"style-attr":12}],117:[function(_dereq_,module,exports){
+},{"style-attr":12}],118:[function(_dereq_,module,exports){
 window.glStats = function () {
 
     var _rS = null;
@@ -60944,7 +61110,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],118:[function(_dereq_,module,exports){
+},{}],119:[function(_dereq_,module,exports){
 // performance.now() polyfill from https://gist.github.com/paulirish/5438650
 'use strict';
 
@@ -61399,7 +61565,7 @@ if (typeof module === 'object') {
   module.exports = window.rStats;
 }
 
-},{}],119:[function(_dereq_,module,exports){
+},{}],120:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -61461,7 +61627,7 @@ Util.isLandscapeMode = function() {
 
 module.exports = Util;
 
-},{}],120:[function(_dereq_,module,exports){
+},{}],121:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -61537,6 +61703,6 @@ function getWakeLock() {
 
 module.exports = getWakeLock();
 
-},{"./util.js":119}]},{},[98])(98)
+},{"./util.js":120}]},{},[99])(99)
 });
 //# sourceMappingURL=aframe.js.map
