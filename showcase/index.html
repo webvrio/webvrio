@@ -7,12 +7,11 @@
   <title>WebVR Showcase</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
 <style>
-* {
+html {
   box-sizing: border-box;
 }
-
-html, body {
-  height: 100%;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -21,21 +20,14 @@ body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
 }
+
 #container {
   margin: 0px auto;
   width: 960px;
 }
+
 h1 {
   font-weight: 300;
-}
-#box {
-
-}
-
-#box::after {
-   content: "";
-   display: block;
-   clear: both;
 }
 
 a {
@@ -46,29 +38,49 @@ a:visited {
   color: black;
 }
 
-#box > a {
-  width: 160px;
-  height: 84px;
+#tiles {
+
+}
+
+#tiles::after {
+  content: "";
   display: block;
-  text-align: center;
-  padding-top: 40px;
-  font-size: 28px;
+  clear: both;
+}
+
+#tiles > div {
+  width: 160px;
+  height: 140px;
+  display: block;
   font-weight: 300;
   margin-right: 10px;
   margin-bottom: 10px;
   float: left;
   outline: 1px solid #333;
   transition: 0.3s background-color;
+  padding: 0;
 }
 
-#box > a:hover {
+#tiles > div:hover {
+  //cursor: pointer;
   background-color: #eee;
+}
+
+#tiles > div .desc {
+  width: 100%;
+  padding: 6px;
+}
+
+#tiles > div a {
+  font-size: 28px;
+  line-height: 28px;
 }
 
 #msg {
   display: none;
   width: 100%;
   text-align: center;
+  font-weight: 300;
   outline: 1px solid #000;
   padding: 5px;
   margin-bottom: 10px;
@@ -80,24 +92,45 @@ a:visited {
 
 <div id="container">
 
-<div id="box">
-
-  <h1>WebVR Samples Showcase</h1>
+  <h1>WebVR Showcase</h1>
 
   <div id="msg"></div>
 
-  <a href="cubes/">Cubes</a>
-  <a href="http://quake3.webvr.io">Quake</a>
-  <a href="panorama/">Panorama</a>
-  <a href="aframe/">A-frame</a>
-
-</div>
+  <div id="tiles">
+    <div>
+      <div class="desc">
+      <a href="cubes/">Cubes</a>
+      </div>
+    </div>
+    <div>
+      <div class="desc">
+      <a href="http://quake3.webvr.io">Quake</a>
+      </div>
+    </div>
+    <div>
+      <div class="desc">
+      <a href="panorama/">Panorama</a>
+      </div>
+    </div>
+    <div>
+      <div class="desc">
+      <a href="aframe/">A-frame</a>
+      </div>
+    </div>
+    <div>
+      <div class="desc">
+      <a href="racer">Racer-S</a>
+      <p>wip - webvr soon</p>
+      </div>
+    </div>
+  </div>
 
 <p>&middot;more very soon&middot;</p>
 
 </div>
 
 <script>
+
 var msgEl = document.getElementById('msg');
 
 var hasWebVR = navigator.getVRDevices || !!navigator.getVRDisplays;
@@ -105,13 +138,28 @@ var hasLatestWebVR = !!navigator.getVRDisplays;
 
 var isVRBrowser = navigator.userAgent.indexOf('VR') !== -1;
 
-if (!hasWebVR) {
-  msgEl.innerHTML = "Your browser does not support WebVR";
-  msgEl.style.display = 'block';
-} else if (!hasLatestWebVR) {
-  msgEl.innerHTML = "Your browser is not using the latest WebVR";
-  msgEl.style.display = 'block';
+function init() {
+  checkWebVRSupport();
 }
+window.addEventListener('load', init);
+
+function checkWebVRSupport() {
+  if (!hasWebVR) {
+    msgEl.innerHTML = 'Your browser does not support WebVR';
+    msgEl.style.display = 'block';
+  } else if (!hasLatestWebVR) {
+    msgEl.innerHTML = 'Your browser is not using the latest WebVR';
+    msgEl.style.display = 'block';
+  }
+}
+
+var tiles = document.querySelectorAll('#tiles > div');
+for (var i = 0; i < tiles.length; i++) {
+  tiles[i].addEventListener('click', function(e){
+    //e.target
+  }, false);
+}
+
 </script>
 </body>
 </html>

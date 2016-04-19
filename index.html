@@ -1,53 +1,69 @@
-
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#333">
 
-        <title>webvr.io</title>
+  <title>webvr.io</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Roboto', sans-serif;
-            }
+html, body {
+  height: 100%;
+}
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: table;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+}
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+.container {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
 
-            .title {
-                font-size: 74px;
-            }
+.content {
+  text-align: center;
+  display: inline-block;
 
-            .title .em {
-                font-weight: 300;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">web<span class="em">vr</span>.io</div>
-            </div>
-        </div>
-    </body>
+  animation: fadein 0.3s;
+}
+
+.title {
+  font-size: 74px;
+}
+
+.title .em {
+  font-weight: 300;
+}
+
+.sub {
+  font-size: 16px;
+  font-weight: 300;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+        <div class="title">web<span class="em">vr</span>.io</div>
+        <div class="sub">coming soon</div>
+    </div>
+  </div>
+</body>
 </html>

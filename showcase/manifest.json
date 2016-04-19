@@ -1,0 +1,8 @@
+{
+  "name": "WebVR Showcase",
+  "start_url": "/?standalone",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000",
+  "theme_color": "#000"
+}
