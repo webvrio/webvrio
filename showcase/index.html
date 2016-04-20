@@ -23,11 +23,19 @@ body {
 
 #container {
   margin: 0px auto;
-  width: 960px;
+  padding: 10px;
+}
+
+#header {
+  clear: both;
 }
 
 h1 {
   font-weight: 300;
+  font-size: 32px;
+  line-height: 32px;
+  margin-top: 0px;
+  margin-bottom: 8px;
 }
 
 a {
@@ -41,6 +49,8 @@ a:visited {
 #tiles {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 #tiles::after {
@@ -51,18 +61,17 @@ a:visited {
 
 #tiles > div {
   width: 160px;
-  height: 140px;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
   font-weight: 300;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  outline: 1px solid #333;
+  margin-bottom: 0px;
   transition: 0.3s background-color;
-  padding: 0;
+  padding: 6px;
+  flex: 0 1 33.333%;
 }
 
 #tiles > div:hover {
-  //cursor: pointer;
+  /*cursor: pointer;*/
   background-color: #eee;
 }
 
@@ -72,18 +81,50 @@ a:visited {
 }
 
 #tiles > div a {
-  font-size: 28px;
-  line-height: 28px;
+  width: 100%;
+  text-decoration: none;
+  outline: 3px solid #333;
+}
+
+.image {
+  width: 100%;
+  height: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #eee;
+}
+
+h3.title {
+  margin: 0;
+  padding: 0px 4px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+p.creator {
+  margin: 0;
+  margin-bottom: 3px;
+  padding: 0px 4px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 #msg {
   display: none;
-  width: 100%;
   text-align: center;
   font-weight: 300;
-  outline: 1px solid #000;
+  outline: 1px solid #00529B;
   padding: 5px;
-  margin-bottom: 10px;
+  background-color: #BDE5F8;
+  color: #00529B;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.hidden {
+  display: none !important;
 }
 </style>
 </head>
@@ -92,51 +133,70 @@ a:visited {
 
 <div id="container">
 
+  <div id="header">
+  <span style="float: right; font-size: 20px">WebVR API 1.0</span>
   <h1>WebVR Showcase</h1>
+  </div>
 
   <div id="msg"></div>
 
   <div id="tiles">
-    <div>
-      <div class="desc">
-      <a href="cubes/">Cubes</a>
-      </div>
+    <div class="hidden" id="samples">
+      <a href="https://toji.github.io/webvr-samples/">
+        <div class="image"></div>
+        <h3 class="title">WebVR Samples</h3>
+        <p class="creator">toji</p>
+      </a>
     </div>
     <div>
-      <div class="desc">
-      <a href="http://quake3.webvr.io">Quake</a>
-      </div>
+      <a href="http://quake3.webvr.io">
+        <div class="image"></div>
+        <h3 class="title">Quake</h3>
+        <p class="creator">id software, toji</p>
+      </a>
     </div>
     <div>
-      <div class="desc">
-      <a href="panorama/">Panorama</a>
-      </div>
+      <a href="http://aframe.webvr.io/examples/boilerplate-panorama/">
+        <div class="image" style="background-image: url(assets/panorama.png)"></div>
+        <h3 class="title">Panorama</h3>
+        <p class="creator">MozVR</p>
+      </a>
     </div>
     <div>
-      <div class="desc">
-      <a href="http://aframe.webvr.io">A-frame</a>
-      </div>
+      <a href="https://shopifyvr.myshopify.com/">
+        <div class="image"></div>
+        <h3 class="title">Shopify VR</h3>
+        <p class="creator">Shopify</p>
+      </a>
     </div>
     <div>
-      <div class="desc">
-      <a href="racer">Racer-S</a>
-      <p>wip - webvr soon</p>
-      </div>
+      <a href="http://aframe.webvr.io">
+        <div class="image"></div>
+        <h3 class="title">A-frame</h3>
+        <p class="creator">MozVR</p>
+      </a>
+    </div>
+    <div>
+      <a href="http://racer.webvr.io">
+        <div class="image"></div>
+        <h3 class="title">Racer-S</h3>
+        <p class="creator">[wip]</p>
+      </a>
+    </div>
+    <div>
+      <a href="#"><!-- pick -->
+        <div class="image"></div>
+        <h3 class="title">3D Model</h3>
+        <p class="creator">Sketchfab</p>
+      </a>
     </div>
   </div>
 
-<p>&middot;more very soon&middot;</p>
 
 </div>
 
+<script src="../js/utils.js"></script>
 <script>
-
-var msgEl = document.getElementById('msg');
-
-var hasWebVR = navigator.getVRDevices || !!navigator.getVRDisplays;
-var hasLatestWebVR = !!navigator.getVRDisplays;
-
-var isVRBrowser = navigator.userAgent.indexOf('VR') !== -1;
 
 function init() {
   checkWebVRSupport();
@@ -144,10 +204,18 @@ function init() {
 window.addEventListener('load', init);
 
 function checkWebVRSupport() {
-  if (!hasWebVR) {
-    msgEl.innerHTML = 'Your browser does not support WebVR';
+  var msgEl = document.getElementById('msg');
+
+  if (!VRUtil.isWebVRApiPresent()) {
+    var msg = '';
+    if (VRUtil.isVRBrowser())
+      msg = 'WebVR support is not enabled. Visit "internet://webvr-enable" to enable';
+    else
+      msg = 'Your browser does not support WebVR';
+
+    msgEl.innerHTML = msg;
     msgEl.style.display = 'block';
-  } else if (!hasLatestWebVR) {
+  } else if (!VRUtil.isLatestWebVRApi()) {
     msgEl.innerHTML = 'Your browser is not using the latest WebVR';
     msgEl.style.display = 'block';
   }
@@ -159,6 +227,14 @@ for (var i = 0; i < tiles.length; i++) {
     //e.target
   }, false);
 }
+
+// debug
+var numClicks = 0;
+var lastClickTime = 0;
+document.body.addEventListener('click', function(e){
+  numClicks++;
+  lastClickTime = Date.now();
+}, false);
 
 </script>
 </body>

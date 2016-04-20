@@ -9,11 +9,11 @@ var VRUtil = {
     return UA.indexOf('VR') !== -1;
   },
 
-  isWebVrApiPresent: function() {
+  isWebVRApiPresent: function() {
     return !! window.navigator.getVRDevices || !! window.navigator.getVRDisplays;
   },
 
-  isLatestApi: function() {
+  isLatestWebVrApi: function() {
     return !! window.navigator.getVRDisplays;
   }
 
