@@ -70,9 +70,15 @@ a:visited {
   flex: 0 1 33.333%;
 }
 
+@media only screen and (max-width: 600px) {
+  #tiles > div {
+    flex: 0 1 50%;
+  }
+}
+
 #tiles > div:hover {
   /*cursor: pointer;*/
-  background-color: #eee;
+  /*background-color: #111;*/
 }
 
 #tiles > div .desc {
@@ -84,6 +90,12 @@ a:visited {
   width: 100%;
   text-decoration: none;
   outline: 3px solid #333;
+  transition: 0.3s background-color;
+}
+
+#tiles > div a:hover {
+  background-color: #333;
+  color: white;
 }
 
 .image {
@@ -119,12 +131,23 @@ p.creator {
   background-color: #BDE5F8;
   color: #00529B;
   position: absolute;
+  left: 0;
+  right: 0;
   top: 10px;
-  right: 10px;
+  margin: auto;
+  max-width: 400px;
 }
 
 .hidden {
   display: none !important;
+}
+
+.wip {
+  background-color: #ccc;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-variant: small-caps;
 }
 </style>
 </head>
@@ -150,7 +173,7 @@ p.creator {
     </div>
     <div>
       <a href="http://quake3.webvr.io">
-        <div class="image"></div>
+        <div class="image" style="background-image: url(assets/quake.png)"></div>
         <h3 class="title">Quake</h3>
         <p class="creator">id software, toji</p>
       </a>
@@ -164,14 +187,14 @@ p.creator {
     </div>
     <div>
       <a href="https://shopifyvr.myshopify.com/">
-        <div class="image"></div>
+        <div class="image" style="background-image: url(assets/shopify.png)"></div>
         <h3 class="title">Shopify VR</h3>
-        <p class="creator">Shopify</p>
+        <p class="creator">Shopify <span class="wip">wip</span></p>
       </a>
     </div>
     <div>
       <a href="http://aframe.webvr.io">
-        <div class="image"></div>
+        <div class="image" style="background-image: url(assets/aframe.png)"></div>
         <h3 class="title">A-frame</h3>
         <p class="creator">MozVR</p>
       </a>
@@ -180,11 +203,11 @@ p.creator {
       <a href="http://racer.webvr.io">
         <div class="image"></div>
         <h3 class="title">Racer-S</h3>
-        <p class="creator">[wip]</p>
+        <p class="creator"><span class="wip">wip</span></p>
       </a>
     </div>
     <div>
-      <a href="#"><!-- pick -->
+      <a href="#"><!-- pick one -->
         <div class="image"></div>
         <h3 class="title">3D Model</h3>
         <p class="creator">Sketchfab</p>
