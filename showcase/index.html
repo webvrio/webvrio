@@ -28,6 +28,11 @@ body {
 
 #header {
   clear: both;
+  padding: 0 3px;
+}
+
+#footer {
+
 }
 
 h1 {
@@ -164,6 +169,7 @@ p.creator {
   <div id="msg"></div>
 
   <div id="tiles">
+
     <div class="hidden" id="samples">
       <a href="https://toji.github.io/webvr-samples/">
         <div class="image"></div>
@@ -175,7 +181,7 @@ p.creator {
       <a href="http://quake3.webvr.io">
         <div class="image" style="background-image: url(assets/quake.png)"></div>
         <h3 class="title">Quake</h3>
-        <p class="creator">id software, toji</p>
+        <p class="creator">toji &middot; &copy; id software</p>
       </a>
     </div>
     <div>
@@ -213,8 +219,11 @@ p.creator {
         <p class="creator">Sketchfab</p>
       </a>
     </div>
-  </div>
 
+  </div><!-- /#tiles -->
+
+  <div id="footer">
+  </div>
 
 </div>
 
@@ -253,10 +262,22 @@ for (var i = 0; i < tiles.length; i++) {
 
 // debug
 var numClicks = 0;
-var lastClickTime = 0;
-document.body.addEventListener('click', function(e){
+var clickTimer = null;
+var samplesEl = document.getElementById('samples');
+document.addEventListener('click', function(e){
   numClicks++;
-  lastClickTime = Date.now();
+
+  if (clickTimer)
+    clearTimeout(clickTimer);
+
+  clickTimer = setTimeout(function(){
+    numClicks = 0;
+  }, 2000);
+
+  if (numClicks >= 5) {
+    samplesEl.classList = '';
+    numClicks = 0;
+  }
 }, false);
 
 </script>
