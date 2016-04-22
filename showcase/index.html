@@ -243,7 +243,7 @@ function checkWebVRSupport() {
     if (VRUtil.isVRBrowser())
       msg = 'WebVR support is not enabled. Visit "internet://webvr-enable" to enable';
     else
-      msg = 'Your browser does not support WebVR';
+      msg = 'Your browser does not support WebVR. Click <a href="http://webvr.info">here</a>';
 
     msgEl.innerHTML = msg;
     msgEl.style.display = 'block';
